@@ -79,7 +79,7 @@
             <div class="link-container">
                 <ul>
                     <li><i class="fab fa-facebook"></i></li>
-                    <a href="#/auth/google/redirect"><li><i class="fab fa-google-plus-g"></i></li></a>
+                    <li><i class="fab fa-google-plus-g"></i></li>
                 </ul>
             </div>
         </div>
