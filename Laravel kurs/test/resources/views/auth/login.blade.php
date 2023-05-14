@@ -36,20 +36,26 @@
     <div class="signup-wrap">
         <div class="signup-top">
             <div class="signup-logo">
-                <a href="/projekt">
+                <a href="{{url('welcome')}}">
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="KlikShop">
                 </a>
             </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-wrap">
-                    <input type="email" name="email" placeholder="Nazwa użytkownika"/>
+                    <input type="text" name="username" placeholder="Nazwa użytkownika"/>
+                    @error('username')
+                        <div class="alert alert-danger">{{$message }}</div>
+                    @enderror
                 </div>
                 <div class="input-wrap">
                     <input type="password" name="password" placeholder="Hasło" />
+                    @error('password')
+                        <div class="alert alert-danger">{{$message }}</div>
+                    @enderror
                 </div>
                 <div class="input-wrap">
-                    <button type="submit">{{__('Log in')}}</button>
+                    <button type="submit">{{__('Zaloguj')}}</button>
                 </div>
             </form>
         </div>

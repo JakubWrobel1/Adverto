@@ -45,13 +45,14 @@
                 <!-- <button class="navShowHide">
                     <img src="assets/images/icons/menu.png">
                 </button> -->
-                <a href="/projekt">
+                <a href="{{url('welcome')}}">
 
                     <img src="{{asset('img/images/icons/logo.png')}}" alt="Adverto" class="logo">
 
                 </a>
 
                 <div class="header-right">
+                    
                     <button class="loginSection">
                         <div class="icon-text-wrapper">
                         @if (Route::has('login'))
@@ -62,7 +63,7 @@
                             </a>
                         
                         @else
-                        <a href="{{ route('login') }}">login</a>
+                        <a href="{{ route('login') }}">logowanie</a>
                             @if (Route::has('register'))
                             <a href="{{ route('register') }}">register</a>
                             @endif
