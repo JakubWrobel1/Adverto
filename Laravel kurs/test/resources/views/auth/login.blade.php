@@ -4,7 +4,7 @@
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Logowanie - Adverto</title>
+    <title>Logowanie - KlikShop</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -57,20 +57,14 @@
                 <div class="input-wrap">
                     <button type="submit">{{__('Zaloguj')}}</button>
                 </div>
-                @if (Route::has('password.request'))
-                <a class="#link" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-                @endif
-                
-            </form>            
+            </form>
         </div>
         <div class="signup-bottom">
             <h3>Lub zaloguj się za pomocą: </h3>
             <div class="link-container">
                 <ul>
                     <li><i class="fab fa-facebook"></i></li>
-                    <a href="#/auth/google/redirect"><li><i class="fab fa-google-plus-g"></i></li></a>
+                    <li><i class="fab fa-google-plus-g"></i></li>
                 </ul>
             </div>
         </div>
