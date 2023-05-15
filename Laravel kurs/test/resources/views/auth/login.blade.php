@@ -43,8 +43,8 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-wrap">
-                    <input type="text" name="username" placeholder="Nazwa użytkownika"/>
-                    @error('username')
+                    <input type="text" name="login" placeholder="Nazwa użytkownika/e-mail"/>
+                    @error('login')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>

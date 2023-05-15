@@ -40,7 +40,12 @@
             </div>
             <form method="POST" action="{{route('register')}}">
                @csrf
-               
+               <div class="input-wrap">
+                    <input type="text" name="name" placeholder="Imię i nazwisko*" />
+                    @error('name')
+                        <div class="alert alert-danger">{{$message }}</div>
+                    @enderror
+                </div>
                <div class="input-wrap">
                     <input type="text" name="username" placeholder="Nazwa użytkownika" />
                     @error('username')
@@ -48,23 +53,24 @@
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="email" name="email" placeholder="Email" />
+                    <input type="email" name="email" placeholder="Email*" />
                     @error('email')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="password" name="password" placeholder="Hasło" />
+                    <input type="password" name="password" placeholder="Hasło*" />
                     @error('password')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="password" name="password_confirmation" placeholder="Wpisz ponownie hasło" />                  
+                    <input type="password" name="password_confirmation" placeholder="Wpisz ponownie hasło*" />                  
                 </div>
                 <div class="input-wrap-left">
+                    
+                    <p>Akceptuję regulamin sklepu internetowego*</p>
                     <input type="checkbox" name="terms" />
-                    <p>Akceptuję <span><u>Regulamin</u></span> sklepu internetowego.</p>
                     @error('terms')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror

@@ -31,23 +31,15 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'username' => ['required', 'string', 'max:255', 'unique:users',
-                function ($attribute, $value, $fail) {
-                    if (User::where('username', $value)->exists()) {
-                        $fail(__('Ta nazwa użytkownika jest już zajęta.'));
-                    }
-                }],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',
-                function ($attribute, $value, $fail) {
-                    if (User::where('email', $value)->exists()) {
-                        $fail(__('Ten mail jest zajęty'));
-                    }
-                }],
+            'name'=>['required', 'string', 'max:255'],
+            'username' => ['max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' =>['accepted']
         ]);
 
         $user = User::create([
+            'name'=> $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),

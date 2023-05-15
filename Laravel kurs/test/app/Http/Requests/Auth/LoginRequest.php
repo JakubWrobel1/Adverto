@@ -27,8 +27,9 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
+        
         return [
-            'username' => ['required', 'string'],
+            'login' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -42,14 +43,16 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $credentials = $this->only('username', 'password');
+        $field = filter_var($this->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $credentials = [$field => $this->input('login'), 'password' => $this->input('password')];
+
         $remember = $this->boolean('remember');
 
         if (! Auth::attempt($credentials, $remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'username' => __('Podana nazwa użytkownika lub hasło jest nieprawidłowe.'),
+                'login' => __('Podana nazwa użytkownika lub hasło jest nieprawidłowe.'),
             ]);
         }
 
