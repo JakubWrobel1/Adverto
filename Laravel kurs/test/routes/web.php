@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Logout;
@@ -34,5 +35,9 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
+ 
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+ 
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 require __DIR__.'/auth.php';
