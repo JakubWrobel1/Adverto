@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ProviderController;
+use App\Http\Controllers\MyAccount;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Logout;
@@ -34,6 +35,12 @@ Route::post('logout', [Logout::class, 'logout'])->name('logout');
 Route::get('/welcome', function(){
     return view('welcome');
 });
+Route::get('/my-account', [MyAccount::class, 'index'])->name('my-account')->middleware('auth');
+
+Route::get('/my-account/edit', [MyAccount::class, 'edit'])->name('my-account.edit');
+
+Route::post('/my-account/save', [MyAccount::class, 'save'])->name('my-account.save');
+
 
  
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);

@@ -57,7 +57,7 @@
                         <div class="icon-text-wrapper">
                         @if (Route::has('login'))
                         @auth
-                            <a href="{{url('/my-account')}}">
+                            <a href="{{route('my-account')}}">
                             <i class="fa-light fa-circle-user" style="color: #ffffff;"></i>
                             <span>Moje konto</span>
                             </a>

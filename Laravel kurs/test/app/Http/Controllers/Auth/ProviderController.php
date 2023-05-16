@@ -31,7 +31,7 @@ class ProviderController extends Controller
      
         return redirect('/welcome');
         
-        dd($user);
+        
     }
 }
 
