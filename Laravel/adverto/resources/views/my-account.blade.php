@@ -7,3 +7,4 @@
 <p>Nazwa użytkownika: {{ $user->username }}</p>
 <p>Email: {{ $user->email }}</p>
 <a href="{{ route('my-account.edit') }}">Edytuj dane</a>
+<a href="{{ url('welcome')}}"><button>Powrót do strony głównej</button></a>

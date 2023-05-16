@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class Logout extends Controller
+class Logout
 {
     public function logout(Request $request)
     {
