@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 16, 2023 at 04:41 PM
+-- Generation Time: Maj 16, 2023 at 04:43 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -49,7 +49,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `provider`, `provider_id`, `remember_token`, `provider_token`, `created_at`, `updated_at`) VALUES
 (13, 'Kubawbl1', NULL, 'kubawbl@gmail.com', NULL, NULL, 'google', '109607165717092958360', NULL, 'ya29.a0AWY7CkkKXxDoqpJ631Py16f9drhtZuXgJXPF6rIOy2fAYpNSojF4q2R9P9mHJFpY1U1jHbTVdemoVKhkYQmdMIa6z-jzyNkTekCfl-oxU6nEorJMe9LLnFeMyQowMSMEM-lbk6jUHTEHn6_xtu2_1y0N9TLkaCgYKARgSARMSFQG1tDrp6PWmCmVUEgY9fBLloqVGSg0163', '2023-05-15 12:55:28', '2023-05-16 11:43:27'),
 (14, 'Jakub Wróbel', NULL, 'wrobel.jakub01@gmail.com', NULL, NULL, 'google', '117601906804964362669', NULL, 'ya29.a0AWY7Ckn39d8QC1r4z8imWBSv_RioIFBItGiEygz9DLK1hpGWCOCUeZtS7rktqTOOIt6TDvV1jGh8Kf9RAsEIY__JIUj7WK9v8F6yab8acn9V8DdAac1mMQKhpMveZDh6azxqSLvWvyXe3HUjcK-H7km7PJRKaCgYKATMSARISFQG1tDrpctgbhF79T5jtKJxqmncBLw0163', '2023-05-15 13:01:14', '2023-05-15 16:51:21'),
-(18, 'Jakub Wrobel', NULL, 'destinyfeintdrift@gmail.com', NULL, NULL, 'google', '116605911467280616338', NULL, 'ya29.a0AWY7CkmyhLmGZxNC5Gjmlzi5hSdY6tGZdk8M9W_zpDF8TqqFVhjo9bw9Ls08Km2B7RTK_D_Eti3OuAut-OrB_aPD0i4y0GDF3cnZ55YqXps910sjQBIg_gPOrO0NetwYVCjnGv2CsA04c_tgN62zASCS3oJTaCgYKATISARISFQG1tDrp9CmkI9moGCLZRZqOSBVLnA0163', '2023-05-15 17:00:19', '2023-05-15 17:00:19'),
 (19, 'Jakub', 'wbl121', 'jakuwadb@gmail.com', NULL, '$2y$10$zZ54/HWk4d1WbqCM15E7p.q39SSm.A2ZCYGUavfoOK3Ct4UvjFEGe', NULL, NULL, NULL, NULL, '2023-05-16 11:45:55', '2023-05-16 11:50:19'),
 (20, 'Jakub12', 'kubawbl123', 'k71a@gmail.com', NULL, '$2y$10$vC2VisYx.Ke2GBFRH5BRNehYqZ93pRFNDENMh8C8QXrG4IihrnS.G', NULL, NULL, NULL, NULL, '2023-05-16 11:55:07', '2023-05-16 12:32:08');
 
