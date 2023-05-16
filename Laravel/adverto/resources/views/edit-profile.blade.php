@@ -28,4 +28,4 @@
     @enderror
     <button type="submit">Zapisz zmiany</button>
 </form>
-<a href="{{ url()->previous()}}"><button>poprzednia strona</button></a>
+<a href="{{ url('/my-account')}}"><button>poprzednia strona</button></a>

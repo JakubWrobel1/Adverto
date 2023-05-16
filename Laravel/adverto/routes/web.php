@@ -16,6 +16,11 @@ use App\Http\Controllers\Auth\Logout;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/my-account', function () {
     return view('my-account');
 })->middleware(['auth', 'verified'])->name('my-account');
@@ -25,15 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
 Route::get('/welcome', function(){
     return view('welcome');
 });
-
-
-Route::post('logout', [Logout::class, 'logout'])->name('logout');
-
-
 Route::get('/my-account', [MyAccount::class, 'index'])->name('my-account')->middleware('auth');
 
 Route::get('/my-account/edit', [MyAccount::class, 'edit'])->name('my-account.edit');
