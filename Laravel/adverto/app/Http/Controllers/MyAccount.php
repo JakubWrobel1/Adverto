@@ -40,9 +40,10 @@ class MyAccount extends Controller
         $user->name = $request->input('name');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
-    
+        
         $newPassword = $request->input('new_password');
-        if (!empty($newPassword)) {
+        if (!empty($newPassword)) 
+        {
             $user->password = Hash::make($newPassword);
         }
     

@@ -1,6 +1,7 @@
 <h1>Edytuj profil</h1>
 <form action="{{ route('my-account.save') }}" method="POST">
     @csrf
+    
     <label for="name">Imię:</label>
     <input type="text" name="name" value="{{ $user->name }}" required>
     @error('name')

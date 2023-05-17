@@ -6,8 +6,9 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Laravel\Socialite\Facades\Socialite;
-
+use Throwable;
 class ProviderController extends Controller
 {
     public function redirect($provider)
@@ -16,7 +17,7 @@ class ProviderController extends Controller
     }
 
     public function callback($provider)
-    {   
+    {   try{
         $SocialUser = Socialite::driver($provider)->user();
         $user = User::updateOrCreate([
             'provider_id' => $SocialUser->id,
@@ -27,33 +28,35 @@ class ProviderController extends Controller
             'provider_token' => $SocialUser->token,
         ]);
          
-       
         Auth::login($user);
-        
+
       if ($user->password === null) {
             return view('set-password-form');
-            ;
         }
         return redirect('/welcome');
-        
+    }catch(Throwable $e){
+        report($e);
+        return view('/auth/login');
+    } 
         
     }
-    public function showSetPasswordForm()
-    {
-        return view('set-password-form');
-    }
+    
+    
     public function setPassword(Request $request)
-    {
+    {   
         $user = Auth::user();
-        #dd($user);
-
         $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password_confirmation'=>['required'],
+            'password' => ['required', 'confirmed', Password::defaults()]
+            
         ]);
-
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
-        Auth::login($user);
-        return redirect('/welcome');
+        
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+             Auth::login($user);
+            return redirect('/welcome');
+     
+        
+        
     }
 }
