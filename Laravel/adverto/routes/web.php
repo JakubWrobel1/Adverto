@@ -42,7 +42,12 @@ Route::get('/my-account/edit', [MyAccount::class, 'edit'])->name('my-account.edi
 Route::post('/my-account/save', [MyAccount::class, 'save'])->name('my-account.save');
 
 
- 
+Route::get('set-password', [ProviderController::class, 'showSetPasswordForm'])->name('set-password-form')->middleware('auth');
+
+Route::post('set-password', [ProviderController::class, 'setPassword'])->name('set-password')->middleware('auth');
+
+Route::get('login/{provider}/callback', [ProviderController::class, 'redirect'])->name('login.provider.callback');
+
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
  
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);

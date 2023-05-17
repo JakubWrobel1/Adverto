@@ -50,4 +50,9 @@ class MyAccount extends Controller
 
         return redirect()->route('my-account');
     }
+    public function setPasswordForm()
+    {
+        return view('set-password');
+    }
+
 }
