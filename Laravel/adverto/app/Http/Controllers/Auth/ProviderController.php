@@ -36,11 +36,13 @@ class ProviderController extends Controller
         return redirect('/welcome');
     }catch(Throwable $e){
         report($e);
-        return view('/auth/login');
+        return view('set-password-form');
     } 
         
     }
-    
+    public function showSetPasswordForm(){
+        return view('set-password-form');
+    }
     
     public function setPassword(Request $request)
     {   
@@ -54,9 +56,6 @@ class ProviderController extends Controller
             $user->password = Hash::make($request->input('password'));
             $user->save();
              Auth::login($user);
-            return redirect('/welcome');
-     
-        
-        
+            return redirect('/welcome');       
     }
 }

@@ -17,6 +17,7 @@
     @error('email')
         <div class="alert alert-danger">{{$message }}</div>
     @enderror
+    @unless(!($user->password))
     <label for="old_password"> Stare Hasło:</label>
     <input type="password" name="old_password">
     @error('old_password')
@@ -27,6 +28,11 @@
     @error('password')
         <div class="alert alert-danger">{{$message }}</div>
     @enderror
+    @endunless
     <button type="submit">Zapisz zmiany</button>
 </form>
+@unless($user->password)
+<a href="{{ route('set-password-form')}}"><button>Ustaw hasło dla swojego konta</button></a>
+@endunless
+
 <a href="{{ url('/my-account')}}"><button>poprzednia strona</button></a>

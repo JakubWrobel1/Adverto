@@ -54,9 +54,11 @@
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
+                
                 <div class="input-wrap">
                     <button type="submit">{{__('Zapisz')}}</button>
                 </div>
+            <p>Jeśli nie ustawisz teraz hasła będziesz mógł to zrobić później w ustawieniach konta -> <a href="{{url('my-account')}}">Moje konto<a></p>
             </form>            
         </div>
     </div>
