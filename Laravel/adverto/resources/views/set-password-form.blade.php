@@ -37,15 +37,21 @@
         <div class="signup-top">
             <div class="signup-logo">
                 <a href="{{url('welcome')}}">
-                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="KlikShop">
+                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
             <form method="POST" action="{{ route('set-password') }}">
                 @csrf               
                 <div class="input-wrap">
                     <input type="password" name="password" placeholder="Ustaw hasło dla swojego konta" required/>
-                    @error('password')
-                        <div class="alert alert-danger">{{$message }}</div>
+                    @error('password')                      
+                        <div class="alert alert-danger">
+                            @if($message === 'Potwierdzenie pola password nie zgadza się.')
+                            Hasła nie są takie same
+                            @elseif($message === 'Pole password musi mieć co najmniej 8 znaków.')
+                            Hasło musie mieć co najmniej 8 znaków.
+                            @endif    
+                        </div>
                     @enderror
                 </div>
                 <div class="input-wrap">

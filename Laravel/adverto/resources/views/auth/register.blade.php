@@ -35,33 +35,49 @@
         <div class="signup-top">
         <div class="signup-logo">
                 <a href="{{url('welcome')}}">
-                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="KlikShop">
+                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
             <form method="POST" action="{{route('register')}}">
                @csrf
                <div class="input-wrap">
-                    <input type="text" name="name" placeholder="Imię i nazwisko*" />
+                    <input type="text" name="name" placeholder="Imię i nazwisko*" value="{{ old('name') }}" required />
                     @error('name')
-                        <div class="alert alert-danger">{{$message }}</div>
+                        <div class="alert alert-danger">
+                            {{$message }}
+                        </div>
                     @enderror
                 </div>
                <div class="input-wrap">
-                    <input type="text" name="username" placeholder="Nazwa użytkownika" />
-                    @error('username')
-                        <div class="alert alert-danger">{{$message }}</div>
+                    <input type="text" name="username" placeholder="Nazwa użytkownika" value="{{ old('username') }}" required />
+                    @error('username')                       
+                        <div class="alert alert-danger">
+                            @if($message ==='Pole username już istnieje.')
+                                Nazwa użytkownika jest zajęta
+                             @else
+                                {{$message}}
+                            @endif</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="email" name="email" placeholder="Email*" />
+                    <input type="email" name="email" placeholder="Email*"  value="{{ old('email') }}" required />
                     @error('email')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="password" name="password" placeholder="Hasło*" />
+                <input type="password" name="password" placeholder="Hasło*" required/>
                     @error('password')
-                        <div class="alert alert-danger">{{$message }}</div>
+                        <div class="alert alert-danger">
+                            @if ($message === 'Pole password musi mieć co najmniej 8 znaków.')
+                                Hasło musi mieć co najmniej 8 znaków.
+                            @elseif($message === 'Potwierdzenie pola password nie zgadza się.')
+                                Podane hasła nie są takie same
+                               
+                            @else
+                                {{$message}}
+                            @endif
+                        </div>
                     @enderror
                 </div>
                 <div class="input-wrap">
@@ -70,16 +86,23 @@
                 <div class="input-wrap-left">
                     
                     <p>Akceptuję regulamin sklepu internetowego*</p>
-                    <input type="checkbox" name="terms" />
+                    <input type="checkbox" name="terms" required/>
                     @error('terms')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
                     <button type="submit">Zarejestruj się</button>
+                                
+
                 </div>
             </form>
+            <div class="input-wrap">
+                <a href="{{url('login')}}"><button>Zaloguj się</button></a>
+            </div>
         </div>
+
+                    
         <div class="signup-bottom">
             <h3>Lub zaloguj się za pomocą: </h3>
             <div class="link-container">

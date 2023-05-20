@@ -165,8 +165,8 @@ its' => 'Pole :attribute zabrania :other.',
 */
 
 'custom' => [
-    'attribute-name' => [
-        'rule-name' => 'custom-message',
+    'password' => [
+        'size' =>'Pole hasło musi mieć :size znaków.',
     ],
 ],
 

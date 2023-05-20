@@ -37,19 +37,19 @@
         <div class="signup-top">
             <div class="signup-logo">
                 <a href="{{url('welcome')}}">
-                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="KlikShop">
+                    <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-wrap">
-                    <input type="text" name="login" placeholder="Nazwa użytkownika/e-mail"/>
+                    <input type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
                     @error('login')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
                 <div class="input-wrap">
-                    <input type="password" name="password" placeholder="Hasło" />
+                    <input type="password" name="password" placeholder="Hasło"  required />
                     @error('password')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
@@ -57,14 +57,18 @@
                 <div class="input-wrap">
                     <button type="submit">{{__('Zaloguj')}}</button>
                 </div>
-                @if (Route::has('password.request'))
+                
+                
+            </form>
+            <div class="input-wrap">
+                <a href="{{url('register')}}"><button>Zarejestruj się</button></a>
+            </div>         
+        @if (Route::has('password.request'))
                 <a class="#link" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
                 @endif
-                
-            </form>            
-        </div>
+            </div>
         <div class="signup-bottom">
             <h3>Lub zaloguj się za pomocą: </h3>
             <div class="link-container">
