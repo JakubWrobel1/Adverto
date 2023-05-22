@@ -40,7 +40,7 @@
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
-            <form method="POST" action="{{ route('set-password') }}">
+            <form method="POST" action="{{ route('set-password') }}" id="set-password">
                 @csrf               
                 <div class="input-wrap">
                     <input type="password" name="password" placeholder="Ustaw hasło dla swojego konta" required/>
@@ -69,3 +69,10 @@
         </div>
     </div>
 </body>
+<script>
+  window.addEventListener('beforeunload', function(event) {   
+    if (!document.getElementById('set-password').checkValidity()) {
+      event.returnValue = '';
+    }
+  });
+</script>
