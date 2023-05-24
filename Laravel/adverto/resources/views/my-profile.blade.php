@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
@@ -12,9 +8,9 @@
     
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
-<body >
+<body class="bg-gradient-to-r from-cyan-500 to-blue-500 ">
     <div class="flex">
-            <div class="w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
+            <div class="w-screen border-2 flex justify-between pt-5 pb-5">
                 <div class="w-60 pl-10">
                     <a href="{{url('welcome')}}">
                         <img class="h-full w-full" src="{{asset('img/images/icons/logo.png')}}" alt="Adverto">
@@ -22,8 +18,6 @@
                 </div>
                 <div class="flex group inline-block relative">                     
                     <button >
-                        @if (Route::has('login'))
-                        @auth
                                 <span class="pr-20 text-white hover:text-slate-400 text-lg">Moje konto</span>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
                             <li class="">
@@ -43,37 +37,33 @@
                                     </form>
                             </li>
                             </ul>    
-                        @else
-                        <a href="{{ route('login') }}"class=" hover:text-blue-200 pr-5 text-white text-xl">Logowanie</a>
-                            @if (Route::has('register'))
-                            <a href="{{ route('register') }}"class=" hover:text-blue-200 pr-5 text-white text-xl">Rejestracja</a>
-                            @endif
-                        @endauth
-                        @endif   
-                
                     </button>
                     
                 </div>
             </div>
         </div>
 
-        <!-- <div id="sideNavContainer" style="display: none;">
-
-        </div> -->
-
-        <div class="w-screen">
-            <form action="search.php" method="GET" class="search-form">
-                <input type="search" name="search" placeholder="Wyszukaj..." class="w-screen">
-                
-                <button type="submit" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
+        <div class=" bg-gradient-to-r from-cyan-500 to-blue-500 mt-10 flex justify-center text-white text-lg space-x-80">
+            <div>
+                <a href="#"><button>Ogłoszenia</button></a>
+            </div>
+            <div>
+                <a href="{{route('my-profile')}}"><button>Profil</button></a>
+            </div>
+            <div>
+                <a href="{{route('my-account.edit')}}"><button>Ustawienia</button></a>
+            </div>
         </div>
-
-        <div class="mainSectionContainer">
-
-
+        <div class="flex justify-center p-6">
+            <div class="w-1/2 h-60 flex flex-col items-center  border-2  text-white justify-center">
+                <div class="p-2">
+                    <p>Imię: {{ $user->name }}</p>
+                </div>
+                <div class="p-2"><p>Nazwa użytkownika: {{ $user->username }}</p></div>
+                <div class="p-2"><p>Email: {{ $user->email }}</p></div>
+            </div>
         </div>
-
+        </div>
     </div>
 
 </body>

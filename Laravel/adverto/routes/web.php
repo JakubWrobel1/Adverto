@@ -30,11 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
 Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
 Route::get('/welcome', function(){
     return view('welcome');
 });
+
+Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
+
+
 Route::get('/my-account', [MyAccount::class, 'index'])->name('my-account')->middleware('auth');
 
 Route::get('/my-account/edit', [MyAccount::class, 'edit'])->name('my-account.edit');

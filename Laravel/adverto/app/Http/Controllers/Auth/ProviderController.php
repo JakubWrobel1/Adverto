@@ -25,9 +25,10 @@ class ProviderController extends Controller
         ], [
             'name' => $SocialUser->name,
             'email' => $SocialUser->email,
+            'phone_number' =>$SocialUser->phone_number,
             'provider_token' => $SocialUser->token,
         ]);
-         
+        //dd($user);
         Auth::login($user);
 
       if ($user->password === null) {
@@ -47,6 +48,7 @@ class ProviderController extends Controller
     public function setPassword(Request $request)
     {   
         $user = Auth::user();
+        
         $request->validate([
             'password_confirmation'=>['required'],
             'password' => ['required', 'confirmed', Password::defaults()]

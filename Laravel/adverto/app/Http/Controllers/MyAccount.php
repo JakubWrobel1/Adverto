@@ -13,7 +13,7 @@ class MyAccount extends Controller
         $user = Auth::user();
         #dd($user);
 
-        return view('my-account', compact('user'));
+        return view('my-profile', compact('user'));
     }
     public function edit()
     {
