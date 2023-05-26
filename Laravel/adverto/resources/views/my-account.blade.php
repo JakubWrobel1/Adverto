@@ -37,7 +37,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Wyloguj') }}
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf
                                     </form>
                             </li>
