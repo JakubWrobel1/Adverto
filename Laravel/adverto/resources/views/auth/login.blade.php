@@ -10,7 +10,7 @@
     
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center ">
-    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen rounded-lg  flex flex-col shadow-2xl">
+    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-lg  flex flex-col shadow-2xl">
         <div class="justify-center p-3 flex-grow">
             <div class=" mb-5 p-2">
                 <a href="{{url('welcome')}}">
@@ -20,7 +20,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="flex flex-col mb-4">
-                    <input class="w-full rounded-lg border-none" type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
+                    <input class="w-full rounded-lg border-none  " type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
                     @error('login')
                         <div class="text-red-500">{{$message }}</div>
                     @enderror
@@ -31,14 +31,14 @@
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
-                <div class="flex justify-center h-10">
+                <div class="flex justify-center h-12">
                     <button class="w-screen md:w-1/2 hover:bg-cyan-400 bg-blue-500 md:rounded-full  text-xl text-white transition duration-700 transform hover:scale-95 " type="submit">{{__('Zaloguj')}}</button>
                 </div>
                 
                 
             </form>
             <div class="flex justify-center">
-                <a href="{{url('register')}}" class="w-screen md:w-1/2  bg-blue-500 md:rounded-full text-xl text-white flex justify-center h-10 mb-10 text-white  hover:bg-cyan-400 transition duration-700 transform hover:scale-95"><button >Zarejestruj się</button></a>
+                <a href="{{url('register')}}" class="w-screen md:w-1/2  bg-blue-500 md:rounded-full text-xl text-white flex justify-center h-12 mb-10 text-white  hover:bg-cyan-400 transition duration-700 transform hover:scale-95"><button >Zarejestruj się</button></a>
             </div>         
         @if (Route::has('password.request'))
                 <a class="text-lg hover:text-cyan-600 transition duration-700" href="{{ route('password.request') }}">
