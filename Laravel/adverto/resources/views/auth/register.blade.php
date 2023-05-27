@@ -12,7 +12,7 @@
     
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center ">
-    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-lg  flex flex-col shadow-2xl">
+    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-lg  flex flex-col md:shadow-2xl">
         <div class="justify-center p-3 flex-grow">
         <div class="mb-5 p-2">
                 <a href="{{url('welcome')}}">
