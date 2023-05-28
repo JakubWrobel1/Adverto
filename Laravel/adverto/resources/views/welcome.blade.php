@@ -52,7 +52,7 @@
                         <div class="flex w-auto md:hidden bg-inherit text-white">
                             <div class=" hover:text-slate-400">
                                 <span class="hidden md:flex">Moje konto </span>
-                                <span class="flex justify-center p-5 md:pr-5 fa-solid fa-right-to-bracket md:text-sm text-2xl"></span>
+                                <span class="flex justify-center p-10 md:pr-5 fa-solid fa-right-to-bracket md:text-sm text-2xl"></span>
                             </div>        
                                 <ul class="absolute hidden text-gray-700 pt-20 mr-20 group-hover:block">
                             <li class="">
@@ -90,8 +90,7 @@
         <div class="w-screen ">
             <form action="search.php" method="GET" class="search-form">
                 <div class="flex border-2 border-white">
-                    <input type="search" name="search" placeholder="Wyszukaj..." class="w-screen border-none focus:outline-none focus:ring-0">
-                    
+                    <input type="search" name="search" placeholder="Wyszukaj..." class="w-screen border-none focus:outline-none focus:ring-0">                   
                     <button type="submit" class="w-auto pr-5 bg-white"><i class="fa fa-search bg-white text-xl " ></i></button>
                 </div>
             </form>
