@@ -9,16 +9,16 @@
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 ">
-    <div class="flex">
-            <div class="w-screen border-2 flex justify-between pt-5 pb-5">
-                <div class="w-60 pl-10">
+        <header class="flex">
+            <div class="w-screen flex justify-between pt-5 pb-5">
+                <div class="w-60 md:pl-10">
                     <a href="{{url('welcome')}}">
                         <img class="h-full w-full" src="{{asset('img/images/icons/logo.png')}}" alt="Adverto">
                     </a>
                 </div>
                 <div class="flex group inline-block relative">                     
                     <button >
-                                <span class="pr-20 text-white hover:text-slate-400 text-lg">Moje konto</span>        
+                                <span class="pr-5 md:pr-20 text-white hover:text-slate-400 text-lg">Moje konto</span>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
                             <li class="">
                                 <a
@@ -41,21 +41,21 @@
                     
                 </div>
             </div>
-        </div>
+        </header>
 
-        <div class=" bg-gradient-to-r from-cyan-500 to-blue-500 mt-10 flex justify-center text-white text-lg space-x-80">
-            <div>
-                <a href="#"><button>Ogłoszenia</button></a>
+        <div class=" w-screen bg-gradient-to-r from-cyan-500 to-blue-500 md:mt-10  flex flex-col md:flex-row justify-center items-center text-lg md:space-x-1/4 ">     
+            <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 border-2 p-3 w-screen flex items-center justify-center ">
+                <a href="#"><button class="md:hover:text-slate-500">Ogłoszenia</button></a>
             </div>
-            <div>
-                <a href="{{route('my-profile')}}"><button>Profil</button></a>
+            <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 p-3 border-2 w-screen flex items-center justify-center">
+                <a  href="{{route('my-profile')}}"><button class="underline underline-offset-4 md:hover:text-slate-500 ">Profil</button></a>
             </div>
-            <div>
-                <a href="{{route('my-account.edit')}}"><button>Ustawienia</button></a>
+            <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 p-3 border-2 w-screen flex items-center justify-center">
+                <a href="{{route('my-account.edit')}}"><button class="md:hover:text-slate-500">Ustawienia</button></a>
             </div>
         </div>
-        <div class="flex justify-center p-6">
-            <div class="w-1/2 h-60 flex flex-col items-center  border-2  text-white justify-center">
+        <div class="flex justify-center pt-5 md:p-6">
+            <div class="bg-white w-screen md:w-1/4 md:h-60 flex flex-col items-center  border-2  justify-center md:rounded-lg">
                 <div class="p-2">
                     <p>Imię: {{ $user->name }}</p>
                 </div>

@@ -1,7 +1,3 @@
-@vite('resources/css/app.css')
-
-
-
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
@@ -12,7 +8,7 @@
     
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
-<body >
+<body>
     <div class="flex">
             <div class="w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
                 <div class="w-60 pl-10">
@@ -42,22 +38,8 @@
                                     </form>
                             </li>
                             </ul>    
-                       
-                
-                    </button>
-                    
+                    </button>                   
                 </div>
-            </div>
-        </div>
-         <div class=" bg-gradient-to-r from-cyan-500 to-blue-500 mt-10 flex justify-center text-white text-lg space-x-80">
-            <div>
-                <a href="#"><button>Ogłoszenia</button></a>
-            </div>
-            <div>
-                <a href="#"><button>Profil</button></a>
-            </div>
-            <div>
-                <a href="{{route('my-account.edit')}}"><button>Ustawienia</button></a>
             </div>
         </div>
     </div>  
