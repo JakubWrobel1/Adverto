@@ -5,20 +5,23 @@
     @vite('resources/css/app.css')
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 ">
         <header class="flex">
             <div class="w-screen flex justify-between pt-5 pb-5">
-                <div class="w-60 md:pl-10">
+                <div class="w-screen scale-75  md:scale-100 md:w-60 md:pl-10">
                     <a href="{{url('welcome')}}">
                         <img class="h-full w-full" src="{{asset('img/images/icons/logo.png')}}" alt="Adverto">
                     </a>
                 </div>
                 <div class="flex group inline-block relative">                     
-                    <button >
-                                <span class="pr-5 md:pr-20 text-white hover:text-slate-400 text-lg">Moje konto</span>        
+                    <button class="flex pt-2">   
+                    <div class="w-auto bg-inherit text-white">
+                                <div class="hover:text-slate-400">
+                                <span class="invisible md:visible">Moje konto</span>
+                                <span class="flex justify-center pr-5 fa-solid fa-user md:text-sm text-2xl"></span></div>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
                             <li class="">
                                 <a
@@ -36,7 +39,8 @@
                                         @csrf
                                     </form>
                             </li>
-                            </ul>    
+                            </ul>
+                        </div> 
                     </button>
                     
                 </div>

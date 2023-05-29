@@ -27,7 +27,7 @@
                             <div class="w-auto bg-inherit text-white">
                                 <div class="hover:text-slate-400">
                                 <span class="invisible md:visible">Moje konto </span>
-                                <span class="flex justify-center  md:pr-5 fa-solid fa-user md:text-sm text-2xl"></span></div>        
+                                <span class="flex justify-center  pr-5 fa-solid fa-user md:text-sm text-2xl"></span></div>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
                             <li class="">
                                 <a
@@ -49,20 +49,20 @@
                         </div>    
                         @else
                         
-                        <div class="flex w-auto md:hidden bg-inherit text-white">
+                        <div class=" w-auto md:hidden bg-inherit text-white">
                             <div class=" hover:text-slate-400">
-                                <span class="hidden md:flex">Moje konto </span>
-                                <span class="flex justify-center p-10 md:pr-5 fa-solid fa-right-to-bracket md:text-sm text-2xl"></span>
+                                <span class="invisible md:flex">Moje konto </span>
+                                <span class="flex justify-center items-center  md:pr-5 fa-solid fa-right-to-bracket md:text-sm text-2xl"></span>
                             </div>        
-                                <ul class="absolute hidden text-gray-700 pt-20 mr-20 group-hover:block">
+                                <ul class=" absolute hidden text-gray-700 pt-5 md:pt-20  md:mr-20 group-hover:block">
                             <li class="">
                                 <a
-                                class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                class="rounded-t bg-gray-200 hover:bg-gray-400  block whitespace-no-wrap"
                                 href="{{route('login')}}"
                                 >Zaloguj</a>
                             </li>
                             <li class="">
-                            <a class="class=rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('register') }}">  
+                            <a class="class=rounded-t bg-gray-200 hover:bg-gray-400 py-2 md:px-4 block whitespace-no-wrap" href="{{ route('register') }}">  
                                 Zarejestruj się</a>
                             </li>
                             </ul>
