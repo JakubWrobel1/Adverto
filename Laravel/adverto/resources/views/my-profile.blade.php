@@ -26,7 +26,7 @@
                             <li class="">
                                 <a
                                 class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                href="{{route('my-account')}}"
+                                href="{{route('my-profile')}}"
                                 >Mój profil</a>
                             </li>
                             <li class="">
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="flex justify-center pt-5 md:p-6">
-            <div class="bg-white w-screen md:w-1/4 md:h-60 flex flex-col items-center  border-2  justify-center md:rounded-lg">
+            <div class="bg-white w-screen md:w-2/4 md:h-60 flex flex-col items-center  border-2  justify-center md:rounded-lg">
                 <div class="p-2">
                     <p>Imię: {{ $user->name }}</p>
                 </div>
