@@ -55,7 +55,7 @@
                 <a  href="{{route('my-profile')}}"><button class=" underline-offset-4 md:hover:text-slate-500 ">Profil</button></a>
             </div>
             <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 p-3 border-2 w-screen flex items-center justify-center">
-                <a href="{{route('my-account.edit')}}"><button class="md:hover:text-slate-500 underline">Ustawienia</button></a>
+                <a href="{{route('my-account.edit')}}"><button class="md:hover:text-slate-500 underline underline-offset-4">Ustawienia</button></a>
             </div>
         </div>
     <div class="flex justify-center pt-5 md:p-6">
