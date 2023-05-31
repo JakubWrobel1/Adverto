@@ -15,7 +15,9 @@
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-x-hidden">
     <div class="flex">
+
         <div class="  w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
+
             <div class="w-screen scale-75 md:scale-100 md:w-60 md:pl-10">
                 <a href="{{ url('welcome') }}">
                     <img class="h-full w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
@@ -27,7 +29,9 @@
                         @auth
                             <div class="w-auto bg-inherit text-white">
                                 <div class="hover:text-slate-400">
+
                                     <span class="invisible md:visible">Twoje konto </span>
+
                                     <span class="flex justify-center pr-5 fa-solid fa-user md:text-sm text-2xl"></span>
                                 </div>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
@@ -35,10 +39,12 @@
                                         <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-profile') }}">Mój profil</a>
                                     </li>
                                     <li>
-                                        <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
+                           <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
                                     </li>
                                     <li>
                                         <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
+  
                                             {{ __('Wyloguj') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -86,6 +92,7 @@
                 </button>
             </div>
         </form>
+
     <div class="mt-5 w-screen  bg-white rounded-lg">
         <ul class="m-5 p-5 grid gap-2 grid-cols-3 md:flex md:justify-center ">
             <li>
@@ -147,7 +154,9 @@
                     <div class="p2 text-lg">cena</div>
                 </div>
             </li>
-            <li class="w-auto md:w-30">
+    <div>
+        <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 ">
+            <li class="w-auto">
                 <div class="p-2 bg-white rounded-lg">
                     <div>
                         <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
@@ -176,6 +185,17 @@
                     <div class="text-sm">Miejsce i data</div>
                     <div class="p2 text-lg">cena</div>
                 </div>
+            </li>
+            <li class="w-auto md:w-30">
+                <div class="p-2 bg-white rounded-lg">
+                    <div>
+                        <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                    </div>
+                    <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
+                    <div class="text-sm">Miejsce i data</div>
+                    <div class="p2 text-lg">cena</div>
+                </div>
+
             </li> 
             <li class="w-auto md:w-30">
                 <div class="p-2 bg-white rounded-lg">
@@ -224,4 +244,6 @@
 
 </body>
 
+
+ 
 </html>
