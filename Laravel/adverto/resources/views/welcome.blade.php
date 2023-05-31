@@ -15,7 +15,7 @@
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-x-hidden">
     <div class="flex">
-        <div class=" w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
+        <div class="  w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
             <div class="w-screen scale-75 md:scale-100 md:w-60 md:pl-10">
                 <a href="{{ url('welcome') }}">
                     <img class="h-full w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
@@ -27,7 +27,7 @@
                         @auth
                             <div class="w-auto bg-inherit text-white">
                                 <div class="hover:text-slate-400">
-                                    <span class="invisible md:visible">Moje konto </span>
+                                    <span class="invisible md:visible">Twoje konto </span>
                                     <span class="flex justify-center pr-5 fa-solid fa-user md:text-sm text-2xl"></span>
                                 </div>        
                                 <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
@@ -35,7 +35,10 @@
                                         <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-profile') }}">Mój profil</a>
                                     </li>
                                     <li>
-                                        <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
+                                    </li>
+                                    <li>
+                                        <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             {{ __('Wyloguj') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -83,7 +86,46 @@
                 </button>
             </div>
         </form>
+    <div class="mt-5 w-screen  bg-white rounded-lg">
+        <ul class="m-5 p-5 grid gap-2 grid-cols-3 md:flex md:justify-center ">
+            <li>
+                <div>
+                    <div class="flex justify-center">
+                        <a href="#"><img class=" h-full w-full scale-75" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
+                    </div>
+                <div class="flex justify-center p-2"><a href="#" class="truncate hover:bg-black hover:text-white">kategoria</a></div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="flex justify-center">
+                        <a href="#"><img class=" h-full w-full scale-75" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
+                    </div>
+                <div class="flex justify-center p-2"><a href="#" class="truncate hover:bg-black hover:text-white">kategoria</a></div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="flex justify-center">
+                        <a href="#"><img class=" h-full w-full scale-75" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
+                    </div>
+                <div class="flex justify-center p-2"><a href="#" class="truncate hover:bg-black hover:text-white">kategoria</a></div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="flex justify-center">
+                        <a href="#"><img class=" h-full w-full scale-75" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
+                    </div>
+                <div class="flex justify-center p-2"><a href="#" class="truncate hover:bg-black hover:text-white">kategoria</a></div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    
     <div>
+        <span class="flex flex-col items-center text-white text-lg"><strong>Proponowane ogłoszenia</strong><span>
         <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 ">
             <li class="w-auto">
                 <div class="p-2 bg-white rounded-lg">
@@ -124,9 +166,62 @@
                     <div class="text-sm">Miejsce i data</div>
                     <div class="p2 text-lg">cena</div>
                 </div>
-            </li>  
+            </li>
+            <li class="w-auto md:w-30">
+                <div class="p-2 bg-white rounded-lg">
+                    <div>
+                        <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                    </div>
+                    <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
+                    <div class="text-sm">Miejsce i data</div>
+                    <div class="p2 text-lg">cena</div>
+                </div>
+            </li> 
+            <li class="w-auto md:w-30">
+                <div class="p-2 bg-white rounded-lg">
+                    <div>
+                        <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                    </div>
+                    <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
+                    <div class="text-sm">Miejsce i data</div>
+                    <div class="p2 text-lg">cena</div>
+                </div>
+            </li> 
+            <li class="w-auto md:w-30">
+                <div class="p-2 bg-white rounded-lg">
+                    <div>
+                        <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                    </div>
+                    <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
+                    <div class="text-sm">Miejsce i data</div>
+                    <div class="p2 text-lg">cena</div>
+                </div>
+            </li> 
+            <li class="w-auto md:w-30">
+                <div class="p-2 bg-white rounded-lg">
+                    <div>
+                        <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                    </div>
+                    <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
+                    <div class="text-sm">Miejsce i data</div>
+                    <div class="p2 text-lg">cena</div>
+                </div>
+            </li>   
         </ul>  
     </div>
     
+    <div  class=" sticky top-0 w-full bg-inherit text-white p-4 flex flex-col items-center " >
+            <div class="w-screen scale-50 md:scale-100 md:w-60 ">
+                <a class="" href="{{ url('welcome') }}">
+                    <img class="h-full w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
+                </a>
+            </div>
+            <div class="flex justify-center w-screen md:w-1/2 pt-5">
+                <span class="scale-75 md:scale-100">Adverto to darmowe ogłoszenia lokalne w kategoriach: Moda, Zwierzęta, Dla Dzieci, Sport i Hobby, Muzyka i Edukacja. Szybko znajdziesz tu ciekawe ogłoszenia i łatwo skontaktujesz się z ogłoszeniodawcą. Na Adverto czeka na Ciebie praca biurowa, mieszkania, pokoje, samochody. Jeśli chcesz coś sprzedać - w prosty sposób dodasz bezpłatne ogłoszenia. Chcesz coś kupić - tutaj znajdziesz ciekawe okazje, taniej niż w sklepie. Sprzedawaj po sąsiedzku na Adverto<span>
+            </div>
+    </div>
+
+
 </body>
+
 </html>
