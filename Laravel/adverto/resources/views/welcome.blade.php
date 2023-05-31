@@ -130,10 +130,10 @@
             
         </ul>
     </div>
-    
     <div>
-        <span class="flex flex-col items-center text-white text-lg"><strong>Proponowane ogłoszenia</strong><span>
-        <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 ">
+        <span class="flex flex-col items-center text-white text-lg"><strong>Proponowane ogłoszenia</strong>
+        <span>
+        <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 text-black">
             <li class="w-auto">
                 <div class="p-2 bg-white rounded-lg">
                     <div>
@@ -154,8 +154,6 @@
                     <div class="p2 text-lg">cena</div>
                 </div>
             </li>
-    <div>
-        <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 ">
             <li class="w-auto">
                 <div class="p-2 bg-white rounded-lg">
                     <div>
@@ -240,10 +238,5 @@
                 <span class="scale-75 md:scale-100">Adverto to darmowe ogłoszenia lokalne w kategoriach: Moda, Zwierzęta, Dla Dzieci, Sport i Hobby, Muzyka i Edukacja. Szybko znajdziesz tu ciekawe ogłoszenia i łatwo skontaktujesz się z ogłoszeniodawcą. Na Adverto czeka na Ciebie praca biurowa, mieszkania, pokoje, samochody. Jeśli chcesz coś sprzedać - w prosty sposób dodasz bezpłatne ogłoszenia. Chcesz coś kupić - tutaj znajdziesz ciekawe okazje, taniej niż w sklepie. Sprzedawaj po sąsiedzku na Adverto<span>
             </div>
     </div>
-
-
 </body>
-
-
- 
 </html>
