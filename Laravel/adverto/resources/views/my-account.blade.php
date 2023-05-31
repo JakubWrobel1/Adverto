@@ -24,7 +24,7 @@
                             <li class="">
                                 <a
                                 class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                href="{{route('my-account')}}"
+                                href="{{route('my-profile')}}"
                                 >Mój profil</a>
                             </li>
                             <li class="">
