@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Maj 31, 2023 at 03:23 PM
--- Wersja serwera: 10.4.28-MariaDB
--- Wersja PHP: 8.2.4
+-- Generation Time: Jun 01, 2023 at 05:28 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `ads`
+-- Table structure for table `ads`
 --
 
 CREATE TABLE `ads` (
@@ -43,7 +43,7 @@ CREATE TABLE `ads` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -55,7 +55,7 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `images`
+-- Table structure for table `images`
 --
 
 CREATE TABLE `images` (
@@ -67,7 +67,7 @@ CREATE TABLE `images` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE `locations` (
@@ -80,7 +80,7 @@ CREATE TABLE `locations` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `messages`
+-- Table structure for table `messages`
 --
 
 CREATE TABLE `messages` (
@@ -96,49 +96,11 @@ CREATE TABLE `messages` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_100000_create_password_reset_tokens_table', 1);
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_reset_tokens`
---
-
-INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
-('kubawbl@gmail.com', '$2y$10$nLeue5BcKxMpM9WGjcNSPeZEcRrySLFFBY1Xdqd8yZEbIVv8T1JPi', '2023-05-30 12:19:16');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` bigint(255) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
@@ -158,15 +120,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `phone_number`, `provider`, `provider_id`, `remember_token`, `provider_token`, `created_at`, `updated_at`) VALUES
-(8, 'Kubawbl', 'kubawbl', 'kubawbl@gmail.com', NULL, '$2y$10$ynS8j9U0rh5SlOQaiIxO4uNoj/DvIeSM7SmlSv30eiEk5ObsrPtzy', NULL, 'google', '109607165717092958360', NULL, 'ya29.a0AWY7CklTbcjIr6zS5-7qtVNx1u7E2szojib2Yp7dUaEjwF_l1qacKXGFN6ASN2kaSGEJSmPglV6gFrFPN9zvZOIwxhzrgCUq42REKGgROqb-uCWsX1n8tBaO2eS9rSoU0QmILY7ExiaK16Uk71qIRgKBLxm8aCgYKAWoSARMSFQG1tDrp3-pMsK1QdfnD4q6rERIdZA0163', '2023-05-24 13:04:28', '2023-05-31 11:22:51'),
-(9, 'Jakub Wróbel', NULL, 'wrobel.jakub01@gmail.com', NULL, '$2y$10$WyLHd8t1j.QHO9Nv66pE.Ojt6i2wQzHxrca2FC0cLrM1EEsDC/pfe', NULL, 'google', '117601906804964362669', NULL, 'ya29.a0AWY7Ckn8JNrmGSpHQRJaarTbL2RzcLnuwLBFkn7fUmTc6uzp1VGbZWVPzH6PxW97bekoXGI0VRHucvVaZCqkleFZR-bNtx_cVuJ6KdR0cqCexP57ggsNmyYsxyNREtd-3Y44gXgGpbvFtcemwdJbjV4GspMhaCgYKAZUSARISFQG1tDrp76w8wS1vjy7-WESBrnLn7g0163', '2023-05-24 16:35:45', '2023-05-29 15:41:21');
+(1, 'test', 'test2', 'test2@gmail.com', NULL, '$2y$10$9sRJh6H2TMlgNVxlMypPOORL0YlMVVRlPtA1WnfylBD/lqMsOLH36', NULL, NULL, NULL, NULL, NULL, '2023-05-27 14:32:45', '2023-05-27 14:33:17'),
+(2, 'test3', 'test3', 'test3@gmail.com', '2023-05-27 14:43:10', '$2y$10$jM2HxuWdjg43MHkoIqEJluxY6kwkweGGHjDOUFhTsl70SZUqWRiZy', NULL, NULL, NULL, NULL, NULL, '2023-05-27 14:42:56', '2023-05-27 14:43:10'),
+(3, 'faq', 'faq', 'faq@gmail.com', '2023-05-27 14:46:58', '$2y$10$00P0eIE5jQqFKA5RbilEd.wJlOSqfTwNWwrpbjmceggv4Xubzck2.', NULL, NULL, NULL, NULL, NULL, '2023-05-27 14:43:41', '2023-05-27 14:46:58'),
+(4, 'test4', 'test4', 'test4@gmail.com', NULL, '$2y$10$c3Jfsx21RKZymNo3Ruv1..JTmIIfKCZpV7Oxor4h0gM5YhYGqYql.', NULL, NULL, NULL, NULL, NULL, '2023-05-28 21:38:42', '2023-05-28 21:38:42');
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for dumped tables
 --
 
 --
--- Indeksy dla tabeli `ads`
+-- Indexes for table `ads`
 --
 ALTER TABLE `ads`
   ADD PRIMARY KEY (`id`),
@@ -175,27 +139,27 @@ ALTER TABLE `ads`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indeksy dla tabeli `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `parent_id` (`parent_id`);
 
 --
--- Indeksy dla tabeli `images`
+-- Indexes for table `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ad_id` (`ad_id`);
 
 --
--- Indeksy dla tabeli `locations`
+-- Indexes for table `locations`
 --
 ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `messages`
+-- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
@@ -204,19 +168,7 @@ ALTER TABLE `messages`
   ADD KEY `ad_id` (`ad_id`);
 
 --
--- Indeksy dla tabeli `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
-
---
--- Indeksy dla tabeli `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -228,22 +180,40 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `ads`
+--
+ALTER TABLE `ads`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -254,8 +224,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `ads`
   ADD CONSTRAINT `ads_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  ADD CONSTRAINT `ads_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`),
-  ADD CONSTRAINT `ads_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `ads_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `ads_ibfk_3` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`);
 
 --
 -- Constraints for table `categories`
