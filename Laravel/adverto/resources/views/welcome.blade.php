@@ -1,51 +1,52 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
     <meta charset="utf-8">
     @vite('resources/css/app.css')
-    
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
-<body class="bg-gradient-to-r from-cyan-500 to-blue-500 overflow-x-hidden">
-    <div class="flex">
-
-        <div class="  w-screen bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pt-5 pb-5">
-
-            <div class="w-screen scale-75 md:scale-100 md:w-60 md:pl-10">
-                <a href="{{ url('welcome') }}">
+<body class="bg-white overflow-x-hidden">
+    <header class="flex bg-[#037ab9]">
+        <div class="w-screen flex justify-between pt-4 pb-4">
+            <div class="w-screen scale-75 ml-10 md:scale-100 md:w-60 md:pl-10">
+                <a href="{{url('welcome')}}">
                     <img class="h-full w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
                 </a>
             </div>
-            <div class="flex group inline-block relative">
-                <button class="flex pt-2">
+            <div class="flex inline-block relative">
+                <button class="flex group">
                     @if (Route::has('login'))
                         @auth
                             <div class="w-auto bg-inherit text-white">
-                                <div class="hover:text-slate-400">
+                                <div class="hover:text-slate-400 pt-1.5">
+                                    <span class="inline-flex items-center text-white hover:text-black text-lg">
+                                        <i class="fa-solid fa-xl pr-1.5 fa-circle-user "></i><span class="hidden md:flex">Twoje konto</span>
+                                    </span>
+                                </div>  
 
-                                    <span class="invisible md:visible">Twoje konto </span>
-
-                                    <span class="flex justify-center pr-5 fa-solid fa-user md:text-sm text-2xl"></span>
-                                </div>        
-                                <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
-                                    <li>
-                                        <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-profile') }}">Mój profil</a>
+                                <ul class="absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
+                                    <li class="w-full">
+                                        <h5 class="bg-white py-2 px-4 block whitespace-no-wrap font-semibold text-[#11acef]">
+                                            Twoje konto
+                                        </h5>
+                                    </li>
+                                    <li class="w-full">
+                                        <a
+                                        class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        href="{{route('my-account')}}"
+                                        >Mój profil</a>
                                     </li>
                                     <li>
-                           <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
+                                        <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
                                     </li>
-                                    <li>
-                                        <a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-
-  
-                                            {{ __('Wyloguj') }}
+                                    <li class="w-full">
+                                        <a class="rounded-b bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Wyloguj') }}
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
@@ -80,9 +81,16 @@
                         @endauth
                     @endif     
                 </button>
+                <div class="">
+                    <button class="relative inline-flex items-center justify-center h-10 p-0.5 mx-10 text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-yellow-400 to-yellow-600 group-hover:from-yellow-400 group-hover:to-yellow-600 font-semibold text-white">
+                        <span class="relative px-5 md:py-2 transition-all ease-in duration-75 dark:bg-[#037ab9] rounded-full group-hover:bg-opacity-0">
+                            Dodaj ogłoszenie
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+</header>
 
         <form action="search.php" method="GET" class="search-form">
             <div class="flex border-2 border-white">
