@@ -8,58 +8,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Adverto - Serwis ogłoszeniowy</title>  
 </head>
-<body class="bg-gradient-to-r from-cyan-500 to-blue-500 ">
-<header class="flex">
+<body class="bg-white">
+<header class="flex bg-[#037ab9]">
             <div class="w-screen flex justify-between pt-5 pb-5">
-                <div class="w-screen scale-75  md:scale-100 md:w-60 md:pl-10">
+                <div class="w-screen scale-75  md:scale-100 md:w-80 md:pl-10">
                     <a href="{{url('welcome')}}">
                         <img class="h-full w-full" src="{{asset('img/images/icons/logo.png')}}" alt="Adverto">
                     </a>
                 </div>
-                <div class="flex group inline-block relative">                     
-                    <button class="flex pt-2">   
-                    <div class="focus:ring-0 w-auto bg-inherit text-white">
-                                <div class="hover:text-slate-400">
-                                <span class="invisible md:visible">Moje konto</span>
-                                <span class="flex justify-center pr-5 fa-solid fa-user md:text-sm text-2xl"></span></div>        
-                                <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
-                            <li class="">
-                                <a
-                                class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                href="{{route('my-account')}}"
-                                >Mój profil</a>
-                            </li>
-                            <li class="">
-                            <a class="class=rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Wyloguj') }}
+                <div class="flex inline-block relative">                     
+                    <button class="flex group pt-2">   
+                        <div class="w-auto bg-inherit text-white hover:text-black">
+                            <div class="">
+                                <span class="text-white hover:text-black text-lg ">
+                                    <i class="fa-solid fa-xl pr-1.5 fa-circle-user pt-6"></i><span class="hidden md:flex">Twoje konto<span>
+                                </span>
+                            </div>        
+                            <ul class="absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
+                                <li class="w-full">
+                                    <span class="flex items-center rounded-t bg-white pt-4 pb-2 px-11">
+                                        <i class="text-gray-500 text-2xl pr-2.5 fa-solid fa-user-tie"></i>
+                                        {{ $user->username }}
+                                    </span>
+                                </li>
+                                <li class="w-full">
+                                    <h5 class="bg-white py-2 px-4 block whitespace-no-wrap font-semibold text-[#11acef]">
+                                        Twoje konto
+                                    </span>
+                                    </h5>
+                                </li>
+                                <li class="w-full">
+                                    <a
+                                    class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                    href="{{route('my-account')}}"
+                                    >Mój profil</a>
+                                </li>
+                                <li class="w-full">
+                                    <a class="rounded-b bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Wyloguj') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                            </li>
+                                </li>
                             </ul>
                         </div> 
+                    <button class="relative inline-flex items-center justify-center h-11 p-0.5 mx-10 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-yellow-400 to-yellow-600 group-hover:from-yellow-400 group-hover:to-yellow-600 font-semibold text-white">
+                        <span class="relative px-5 md:py-2.5 transition-all ease-in duration-75 bg-white dark:bg-[#037ab9] rounded-full group-hover:bg-opacity-0">
+                            Dodaj ogłoszenie
+                        </span>
                     </button>
-                    
                 </div>
             </div>
         </header>
 
-        <div class=" w-screen bg-gradient-to-r from-cyan-500 to-blue-500 md:mt-10  flex flex-col md:flex-row justify-center items-center text-lg md:space-x-1/4 ">     
+        <div class=" w-screen md:mt-10 flex flex-col md:flex-row justify-center items-center text-lg md:space-x-1/4 p-4">     
             <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 border-2 p-3 w-screen flex items-center justify-center ">
                 <a href="#"><button class="md:hover:text-slate-500">Ogłoszenia</button></a>
             </div>
             <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 p-3 border-2 w-screen flex items-center justify-center">
-                <a  href="{{route('my-profile')}}"><button class=" underline-offset-4 md:hover:text-slate-500 ">Profil</button></a>
+                <a  href="{{route('my-profile')}}"><button class="underline underline-offset-4 md:hover:text-slate-500 ">Profil</button></a>
             </div>
             <div class="bg-white md:m-0 md:pr-0 md-pl-0 mb-1 p-3 border-2 w-screen flex items-center justify-center">
-                <a href="{{route('my-account.edit')}}"><button class="md:hover:text-slate-500 underline underline-offset-4">Ustawienia</button></a>
+                <a href="{{route('my-account.edit')}}"><button class="md:hover:text-slate-500">Ustawienia</button></a>
             </div>
         </div>
     <div class="flex justify-center pt-5 md:p-6">
-    <div class=" md:focus:ring-0 md:w-auto w-screen bg-white md:rounded-lg flex-col items-center p-10  ">
+    <div class=" md:focus:ring-0 md:w-auto w-screen bg-white md:rounded-lg flex-col items-center p-10 border-2 ">
         <form class="p-2" action="{{ route('my-account.save') }}" method="POST">
             @csrf
             <div class="pt-3 pb-3">

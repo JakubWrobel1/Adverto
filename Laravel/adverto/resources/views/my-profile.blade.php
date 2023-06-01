@@ -10,8 +10,8 @@
 </head>
 <body class="bg-white">
         <header class="flex bg-[#037ab9]">
-            <div class="w-screen flex justify-between pt-4 pb-4">
-                <div class="w-screen scale-75  md:scale-100 md:w-60 md:pl-10">
+            <div class="w-screen flex justify-between pt-5 pb-5">
+                <div class="w-screen scale-75  md:scale-100 md:w-80 md:pl-10">
                     <a href="{{url('welcome')}}">
                         <img class="h-full w-full" src="{{asset('img/images/icons/logo.png')}}" alt="Adverto">
                     </a>
@@ -20,8 +20,8 @@
                     <button class="flex group pt-2">   
                         <div class="w-auto bg-inherit text-white hover:text-black">
                             <div class="">
-                                <span class="text-white hover:text-black text-lg">
-                                    <i class="fa-solid fa-xl pr-1.5 fa-circle-user"></i>Moje konto
+                                <span class="text-white hover:text-black text-lg ">
+                                    <i class="fa-solid fa-xl pr-1.5 fa-circle-user pt-6"></i><span class="hidden md:flex">Twoje konto<span>
                                 </span>
                             </div>        
                             <ul class="absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
@@ -56,7 +56,7 @@
                             </ul>
                         </div> 
                     <button class="relative inline-flex items-center justify-center h-11 p-0.5 mx-10 overflow-hidden text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-yellow-400 to-yellow-600 group-hover:from-yellow-400 group-hover:to-yellow-600 font-semibold text-white">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-[#037ab9] rounded-full group-hover:bg-opacity-0">
+                        <span class="relative px-5 md:py-2.5 transition-all ease-in duration-75 bg-white dark:bg-[#037ab9] rounded-full group-hover:bg-opacity-0">
                             Dodaj ogłoszenie
                         </span>
                     </button>
