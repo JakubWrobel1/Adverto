@@ -32,13 +32,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
 Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
 Route::get('/welcome', function(){
     return view('welcome');
 })->middleware(['verified'])->name('welcome');
+
+Route::get('/create-ad', function(){
+    return view('create-ad');
+})->middleware(['verified'])->name('create-ad');
+
+Route::post('/advertisements', [AdvertisementsController::class, 'store']);
 
 Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
 
