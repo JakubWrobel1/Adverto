@@ -41,4 +41,11 @@ class AdvertisementsController extends Controller
         return redirect()->back()->with('success', 'Advertisement added successfully.');
     }
 
+    public function show($id)
+    {
+        $advertisement = Advertisement::findOrFail($id);
+
+        return view('advertisements.show', compact('advertisement'));
+    }
+
 }

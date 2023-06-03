@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Advertisement</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-</head>
+@extends('layouts.app')
 
-<body class="bg-gray-100">
+@section('content')
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-4">Add Advertisement</h1>
 
@@ -61,6 +54,4 @@
             </div>
         @endif
     </div>
-</body>
-
-</html>
+@endsection
