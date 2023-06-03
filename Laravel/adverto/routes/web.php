@@ -42,8 +42,6 @@ Route::get('/create-ad', function(){
     return view('create-ad');
 })->middleware(['verified'])->name('create-ad');
 
-Route::post('/advertisements', [AdvertisementsController::class, 'store']);
-
 Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
 
 
@@ -64,5 +62,9 @@ Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::get('/advertisements/{categoryId}', [AdvertisementsController::class, 'showByCategory']);
+
+Route::post('/advertisements', [AdvertisementsController::class, 'store']);
+
+Route::get('/advertisement/{id}', [AdvertisementsController::class, 'show'])->name('advertisements.show');
 
 require __DIR__.'/auth.php';
