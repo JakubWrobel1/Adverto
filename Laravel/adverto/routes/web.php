@@ -37,7 +37,7 @@ Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
 Route::get('/welcome', function(){
     return view('welcome');
-});
+})->middleware(['verified']);
 
 Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
 
