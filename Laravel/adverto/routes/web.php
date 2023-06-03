@@ -5,6 +5,7 @@ use App\Http\Controllers\MyAccount;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\AdvertisementsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
 Route::get('/welcome', function(){
     return view('welcome');
-})->middleware(['verified']);
+})->middleware(['verified'])->name('welcome');
 
 Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
 
@@ -57,5 +58,7 @@ Route::get('login/{provider}/callback', [ProviderController::class, 'redirect'])
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
  
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
+
+Route::get('/advertisements/{categoryId}', [AdvertisementsController::class, 'showByCategory']);
 
 require __DIR__.'/auth.php';

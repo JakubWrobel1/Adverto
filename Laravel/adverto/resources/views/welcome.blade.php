@@ -27,7 +27,7 @@
                                     </span>
                                 </div>  
 
-                                <ul class="absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
+                                <ul class="z-10 absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
                                     <li class="w-full">
                                         <h5 class="bg-white py-2 px-4 block whitespace-no-wrap font-semibold text-[#11acef]">
                                             Twoje konto
