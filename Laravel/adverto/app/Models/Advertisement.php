@@ -9,4 +9,9 @@ class Advertisement extends Model
 {
     protected $table = 'ads';
     use HasFactory;
+    
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
 }
