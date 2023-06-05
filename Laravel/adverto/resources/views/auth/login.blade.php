@@ -10,7 +10,7 @@
     
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center ">
-    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-lg  flex flex-col shadow-2xl">
+    <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-sm  flex flex-col shadow-2xl">
         <div class="justify-center p-3 flex-grow">
             <div class=" mb-5 p-2">
                 <a href="{{url('welcome')}}">
@@ -19,14 +19,16 @@
             </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <div class="flex flex-col mb-4">
-                    <input class="w-full rounded-lg border-none  " type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
+                <div class="flex flex-col mb-4 px-4 pb-2">
+                    <label for="login" class="block mb-2 text-sm">E-mail</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
                     @error('login')
                         <div class="text-red-500">{{$message }}</div>
                     @enderror
                 </div>
-                <div class="flex flex-col mb-4">
-                    <input class="w-full rounded-lg border-none" type="password" name="password" placeholder="Hasło"  required />
+                <div class="flex flex-col mb-4 px-4">
+                    <label for="login" class="block mb-2 text-sm">Hasło</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="password" name="password" placeholder="Hasło"  required />
                     @error('password')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror

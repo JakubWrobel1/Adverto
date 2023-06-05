@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\MyAccount;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\AdvertisementsController;
@@ -44,7 +45,6 @@ Route::get('/create-ad', function(){
 
 Route::get('/my-profile', [MyAccount::class, 'index'])->name('my-profile')->middleware('auth');
 
-
 Route::get('/my-account', [MyAccount::class, 'index'])->name('my-account')->middleware('auth');
 
 Route::get('/my-account/edit', [MyAccount::class, 'edit'])->name('my-account.edit');
@@ -61,10 +61,22 @@ Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])
  
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::get('/advertisements/{categoryId}', [AdvertisementsController::class, 'showByCategory']);
+Route::get('/ads/{categoryName}', [AdvertisementsController::class, 'showByCategory']);
 
-Route::post('/advertisements', [AdvertisementsController::class, 'store']);
+Route::post('/ogloszenia', [AdvertisementsController::class, 'store']);
 
-Route::get('/advertisement/{id}', [AdvertisementsController::class, 'show'])->name('advertisements.show');
+Route::get('/ogloszenie/{id}', [AdvertisementsController::class, 'show'])->name('advertisements.show');
+
+Route::get('/moje-ogloszenia', [AdvertisementsController::class, 'myAdvertisements'])->name('advertisements.myAdvertisements');
+
+Route::get('/users', [UserController:: class, 'index'])->name('users.show');
+
+Route::get('/users/search', [UserController::class, 'userSearch'])->name('users.search');
+
+Route::get('/users/{user}/edit', [UserController::class, 'userEdit'])->name('users.edit');
+
+Route::middleware('admin')->get('/users', [UserController:: class, 'index']);
+
+Route::put('/users/{user}', [UserController::class, 'userUpdate'])->name('users.update');
 
 require __DIR__.'/auth.php';

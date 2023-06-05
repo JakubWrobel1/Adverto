@@ -8,7 +8,7 @@
     </div>
     <div class=" w-screen md:mt-10 flex flex-col md:flex-row justify-center items-center text-lg md:space-x-1/4">     
         <div class="bg-white md:m-0 md:pr-0 md:pl-0 mb-1 p-3 w-screen flex items-center justify-center ">
-            <a href="#"><button class="md:hover:text-black text-slate-500">Ogłoszenia</button></a>
+            <a href="{{ route('advertisements.myAdvertisements') }}"><button class="md:hover:text-black text-slate-500">Moje ogłoszenia</button></a>
         </div>
         <div class="bg-white md:m-0 md:pr-0 md:pl-0 mb-1 p-3 w-screen flex items-center justify-center">
             <a  href="{{route('my-profile')}}"><button class="md:hover:text-black text-slate-500">Profil</button></a>

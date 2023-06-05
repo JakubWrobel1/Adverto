@@ -8,12 +8,12 @@
     <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>  
 </head>
-<body class="bg-white overflow-x-hidden">
+<body class="bg-white overflow-x-hidden flex flex-col min-h-screen">
     <header class="flex bg-[#037ab9]">
         <div class="w-screen flex justify-between pt-4 pb-4">
-            <div class="w-screen scale-75 ml-10 md:scale-100 md:w-60 md:pl-10">
+            <div class="w-screen scale-75 md:scale-100 md:w-60 md:pl-10">
                 <a href="{{url('welcome')}}">
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
+                    <img class="h-full w-full min-w-full" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
                 </a>
             </div>
             <div class="flex inline-block relative">
