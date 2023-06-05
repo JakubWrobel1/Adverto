@@ -9,10 +9,10 @@ use App\Models\Location;
 
 class AdvertisementsController extends Controller
 {
-    public function showByCategory($categoryId)
+    public function showByCategory($categoryName)
     {
-        $category = Category::findOrFail($categoryId);
-        $advertisements = Advertisement::where('category_id', $categoryId)->get();
+        $category = Category::where('name', $categoryName)->firstOrFail();
+        $advertisements = Advertisement::where('category_id', $category->id)->get();
 
         return view('advertisements.index', compact('advertisements', 'category'));
     }
@@ -39,6 +39,14 @@ class AdvertisementsController extends Controller
         $advertisement->save();
 
         return redirect()->back()->with('success', 'Advertisement added successfully.');
+    }
+
+    public function myAdvertisements()
+    {
+        $user = auth()->user();
+        $advertisements = Advertisement::where('user_id', $user->id)->get();
+
+        return view('advertisements.myAdvertisements', compact('advertisements'));
     }
 
     public function show($id)

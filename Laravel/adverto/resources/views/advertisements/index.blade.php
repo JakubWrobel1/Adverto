@@ -7,14 +7,14 @@
     <div class="px-36">
         <ul class="m-5 p-5 grid gap-4 grid-cols-1 text-black">
             @foreach($advertisements as $advertisement)
-                <li class="w-auto border border-[#dcdde0]">
+                <li class="w-auto border border-[#dcdde0] flex flex-row">
                     <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg flex items-center">
                         <img class="h-full w-60" src="{{ asset('img/images/icons/car.png') }}" alt="car">
                         <div class="ml-4 flex-grow">
                             <div class="text-xl font-medium"><a class="truncate hover:text-slate-400">{{ $advertisement->title }}</a></div>
-                            <div class="text-sm">{{ $advertisement->location->name }}</div>
+                            <div class="text-sm"><i class="fa fa-location-dot px-2"></i>{{ $advertisement->location->name }}</div>
                         </div>
-                        <div class="p-2 text-lg text-right">{{ $advertisement->price }}</div>
+                        <div class="p-4 pr-6 text-right text-base font-semibold">{{ $advertisement->price }} PLN</div>
                     </a>
                 </li>
             @endforeach
