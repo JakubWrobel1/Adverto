@@ -40,8 +40,12 @@
                                         >Mój profil</a>
                                     </li>
                                     <li>
-                                        <a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
+                                        <a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"href="{{ route('my-account.edit') }}">Ustawienia</a>
                                     </li>
+                                    @if (Auth::user() && Auth::user()->is_admin)
+                                    <li><a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"  href="{{url('/users')}}">Zarządzaj użytkownikami</a></li>
+                                    @endif
+
                                     <li class="w-full">
                                         <a class="rounded-b bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -93,7 +97,7 @@
 </header>
 
     @yield('content')
-    <div class="bg-[#037ab9] ">
+    <div class="bg-[#037ab9] mt-auto">
         <div  class=" sticky top-0 w-full bg-inherit text-white p-4 flex flex-col items-center " >
                 <div class="w-screen scale-50 md:scale-100 md:w-60 ">
                     <a class="" href="{{ url('welcome') }}">
