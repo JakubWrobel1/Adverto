@@ -12,7 +12,7 @@
 </form>
 
 <div class="mt-5 w-screen bg-white rounded-lg">
-    <ul class="m-5 p-5 grid gap-3 grid-cols-6 flex flex-row  md:justify-center ">
+    <ul class="m-5 p-5 grid grid-cols-3 md:gap-3 md:grid-cols-6">
         <li>
             <div class="flex justify-center">
                 <a href="{{ url('/ads/Motoryzacja') }}">
