@@ -35,8 +35,8 @@ public function userUpdate(Request $request, User $user)
 {
     $request->validate([
         'name' => 'required',
-        'username',
-        'email' => 'required|email',
+        'username' => 'nullable|unique:users,username,' . $user->id,
+        'email' => 'required|unique:users,email,' . $user->id
     ]);
 
     $user->update([

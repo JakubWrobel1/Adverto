@@ -12,7 +12,7 @@
 @if($users->isEmpty())
     <p class="text-center text-gray-500 text-xl">Brak wyników</p>
 @else
-    <table class=" table-auto md:table-fixed w-screen">
+    <table class="  m-2 table-auto md:table-fixed w-screen">
         <thead>
             <tr>
                 <th class="w-12 pb-2 pt-2">ID</th>
