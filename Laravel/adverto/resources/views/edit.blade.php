@@ -13,11 +13,17 @@
         <div class="mb-4">
             <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Nazwa użytkownika:</label>
             <input type="text" name="username" value="{{ $user->username }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            @error('username')
+                        <div class="flex flex-col w-full text-red-600">{{$message }}</div>
+                    @enderror
         </div>
 
         <div class="mb-4">
             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
             <input type="email" name="email" value="{{ $user->email }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            @error('email')
+                        <div class="flex flex-col w-full text-red-600">{{$message }}</div>
+                    @enderror
         </div>
 
         <div class="flex items-center justify-center mt-6">
