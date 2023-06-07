@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         #dd($user);
-        $users = User::select('id', 'name', 'email', 'is_admin')->get();
+        $users = User::select('id', 'name', 'username','email', 'is_admin')->get();
 
         return view('users', compact('users'));
 
@@ -22,9 +22,10 @@ class UserController extends Controller
 
     $users = User::where('name', 'like', "%$query%")
                 ->orWhere('email', 'like', "%$query%")
+                ->orWhere('username', 'like', "%$query%")
                 ->get();
 
-    return view('users', compact('users'));
+    return view('result', compact('users'));
 }
 public function userEdit(User $user)
 {
@@ -34,15 +35,17 @@ public function userUpdate(Request $request, User $user)
 {
     $request->validate([
         'name' => 'required',
-        'email' => 'required|email',
+        'username' => 'nullable|unique:users,username,' . $user->id,
+        'email' => 'required|unique:users,email,' . $user->id
     ]);
 
     $user->update([
         'name' => $request->input('name'),
+        'username' => $request->input('username'),
         'email' => $request->input('email'),
     ]);
 
-    return redirect()->back()->with('success', 'Advertisement added successfully.');
+    return redirect('users');
 }
 
-}
+} 

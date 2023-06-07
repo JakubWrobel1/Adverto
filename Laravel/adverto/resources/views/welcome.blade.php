@@ -12,7 +12,7 @@
 </form>
 
 <div class="mt-5 w-screen bg-white rounded-lg">
-    <ul class="m-5 p-5 grid gap-3 grid-cols-6 flex flex-row  md:justify-center ">
+    <ul class="m-5 p-5 grid grid-cols-3 md:gap-3 md:grid-cols-6">
         <li>
             <div class="flex justify-center">
                 <a href="{{ url('/ads/Motoryzacja') }}">
@@ -91,10 +91,9 @@
     </ul>
 </div>
 
-<div>
-    <span class="flex flex-col items-center text-white text-lg"><strong>Proponowane ogłoszenia</strong>
-    <span>
-    <ul class="m-5 p-5 grid gap-4 grid-cols-1 md:grid-cols-4 text-black">
+<div class="bg-[#f2f4f5]">
+    <span class="flex flex-col items-center text-[#002f34] text-4xl font-bold py-14">Najnowsze ogłoszenia</span>
+    <ul class="m-5 px-5 pb-5 grid gap-4 grid-cols-1 md:grid-cols-4 text-black">
         <li class="w-auto">
             <div class="p-2 bg-white rounded-lg">
                 <div>
@@ -175,17 +174,7 @@
                 <div class="text-sm">Miejsce i data</div>
                 <div class="p2 text-lg">cena</div>
             </div>
-        </li> 
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>   
+        </li>  
     </ul>  
 </div>
 @endsection
