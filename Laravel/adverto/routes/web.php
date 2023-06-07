@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\AdvertisementsController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------

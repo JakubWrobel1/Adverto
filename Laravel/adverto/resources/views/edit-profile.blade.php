@@ -14,7 +14,7 @@
             <a  href="{{route('my-profile')}}"><button class="md:hover:text-black text-slate-500">Profil</button></a>
         </div>
         <div class="bg-white md:m-0 md:pr-0 md:pl-0 mb-1 p-3 w-screen flex items-center justify-center">
-            <div class="underline underline-offset-4">Ustawienia</div>
+            <div class="underline underline-offset-4 cursor-default">Ustawienia</div>
         </div>
     </div>
     <div class="flex justify-center pt-5 md:p-6 bg-[#f2f4f5]">
@@ -32,16 +32,17 @@
         
                 </div>
                 <div class="pt-3 pb-3">
-                    <label class="" for="username">Nazwa użytkownika:</label>
-                    <div><input class="" type="text" name="username" value="{{ $user->username }}"> </div>
-                        @error('username')
-                            <div class="flex flex-col w-full text-red-600">{{$message }}</div>
-                        @enderror      
-                </div>
-                <div class="pt-3 pb-3">
                     <label class="" for="email">E-mail:</label>
                     <div><input class="" type="email" name="email" value="{{ $user->email }}" required></div>
                     @error('email')
+                        <div class="flex flex-col w-full text-red-600">{{$message }}</div>
+                    @enderror
+                    
+                </div>
+                <div class="pt-3 pb-3">
+                    <label class="" for="phone_number">Numer telefonu:</label>
+                    <div><input class="" type="tel" name="phone_number" value="{{ $user->phone_number }}" required></div>
+                    @error('phone_number')
                         <div class="flex flex-col w-full text-red-600">{{$message }}</div>
                     @enderror
                     

@@ -25,7 +25,7 @@
 
                 <div class="mb-4 bg-white p-8 rounded-md">
                     <label for="description" class="block font-bold mb-2 text-sm">Opis*</label>
-                    <textarea name="description" rows="5" class="w-full {{ $errors->has('description') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]"></textarea>
+                    <textarea name="description" rows="5" class="w-full {{ $errors->has('description') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]" placeholder="Podaj szczegółowy opis oferowanego przedmiotu lub usługi, uwzględniając wszystkie istotne informacje. Im bardziej kompletny opis, tym większe szanse na zainteresowanie potencjalnych klientów."></textarea>
                 </div>
 
                 <div class="mb-4 bg-white p-8 rounded-md">
