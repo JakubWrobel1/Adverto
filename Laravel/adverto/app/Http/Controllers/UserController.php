@@ -48,4 +48,4 @@ public function userUpdate(Request $request, User $user)
     return redirect('users');
 }
 
-}
+} 
