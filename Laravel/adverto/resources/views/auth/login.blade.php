@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/app.css')
     <title>Logowanie - Adverto</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- CSS only -->
+    <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/login.js') }}"></script>
     
 </head>
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center ">
@@ -17,45 +18,47 @@
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
+
+            <div class=" flex flex-col md:flex-row justify-center items-center pb-5">
+                <div class="bg-white flex items-center justify-center ">
+                    <a href="#"><button class="text-black font-semibold border-b-2 border-black border-x-0 border-t-0 pb-2 p-8">Logowanie</button></a>
+                </div>
+                <div class="bg-white flex items-center justify-center ">
+                    <a  href="{{url('register')}}"><button class="md:hover:text-black text-slate-500 border-b border-black border-x-0 border-t-0 pb-2 p-[33px]">Rejestracja</button></a>
+                </div>
+            </div>
+
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="flex flex-col mb-4 px-4 pb-2">
                     <label for="login" class="block mb-2 text-sm">E-mail</label>
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="text" name="login" placeholder="Nazwa użytkownika/e-mail" required/>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="text" name="login" placeholder="Login/e-mail" required/>
+                </div>
+                <div class="flex flex-col mb-4 px-4">
+                    <label for="password" class="block mb-2 text-sm">Hasło</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="password" name="password" placeholder="Hasło" required />
                     @error('login')
                         <div class="text-red-500">{{$message }}</div>
                     @enderror
-                </div>
-                <div class="flex flex-col mb-4 px-4">
-                    <label for="login" class="block mb-2 text-sm">Hasło</label>
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="password" name="password" placeholder="Hasło"  required />
                     @error('password')
                         <div class="alert alert-danger">{{$message }}</div>
                     @enderror
                 </div>
-                <div class="flex justify-center h-12">
-                    <button class="w-screen md:w-1/2 hover:bg-cyan-400 bg-blue-500 md:rounded-full  text-xl text-white transition duration-700 transform hover:scale-95 " type="submit">{{__('Zaloguj')}}</button>
-                </div>
-                
-                
-            </form>
-            <div class="flex justify-center">
-                <a href="{{url('register')}}" class="w-screen md:w-1/2  bg-blue-500 md:rounded-full text-xl text-white flex justify-center h-12 mb-10 text-white  hover:bg-cyan-400 transition duration-700 transform hover:scale-95"><button >Zarejestruj się</button></a>
-            </div>         
-        @if (Route::has('password.request'))
-                <a class="text-lg hover:text-cyan-600 transition duration-700" href="{{ route('password.request') }}">
+                @if (Route::has('password.request'))
+                <a class="text-lg hover:text-cyan-600 transition duration-700 p-4 text-sm font-bold" href="{{ route('password.request') }}">
                     {{ __('Zapomniałeś hasła?') }}
                 </a>
                 @endif
-            </div>
-        <div class=" flex flex-col items-center text-lg bg-gradient-to-r from-cyan-500 to-blue-500">
-            <h3 class="text-white">Lub zaloguj się za pomocą: </h3>
-            <div class="flex justify-center mb-10 text-2xl">
-                <div class="p-2 hover:text-white">
-                    <a href="/auth/facebook/redirect"><sapn class="fab fa-facebook"></a>
+                <div class="flex justify-center mt-10">
+                    <button id="submitBtn" class="mx-4 h-12 w-screen md:w-full md:rounded-md text-xl text-[#7F9799] bg-[#D8DFE0] font-semibold" type="submit">{{__('Zaloguj się')}}</button>
                 </div>
+            </form>
+        </div>
+        <div class=" flex flex-col items-center justify-center text-lg bg-gradient-to-r from-cyan-500 to-blue-500 pt-10">
+            <h3 class="text-white">Lub zaloguj się za pomocą: </h3>
+            <div class="flex justify-center  text-2xl">
                 <div class="p-2 hover:text-white ">
-                    <a href="/auth/google/redirect"><span class="fab fa-google-plus-g"></a>
+                    <a href="/auth/google/redirect"><span class="fab fa-google-plus-g mb-10"></a>
                 </div>
             </div>
         </div>
