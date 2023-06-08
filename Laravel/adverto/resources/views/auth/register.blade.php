@@ -48,7 +48,7 @@
                     <span id="usernameError" class="text-red-500 text-xs">
                         @error('username')                       
                             <div class="text-red-500">
-                                @if($message ==='Pole username już istnieje.')
+                                @if($message ==='Taki login już istnieje.')
                                     Nazwa użytkownika jest zajęta
                                 @else
                                     {{$message}}
