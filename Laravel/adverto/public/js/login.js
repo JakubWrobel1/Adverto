@@ -55,9 +55,7 @@ $(document).ready(function() {
     var submitBtn = $('#submitBtn');
 
     if (
-      nameInput.val().trim() !== '' &&
       loginInput.val().trim() !== '' &&
-      emailInput.val().trim() !== '' &&
       passwordInput.val().trim() !== ''
     ) {
       submitBtn.prop('disabled', false);
