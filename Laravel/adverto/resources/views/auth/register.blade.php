@@ -33,35 +33,49 @@
 
             <form method="POST" action="{{route('register')}}">
                @csrf
-               <div class="flex flex-col mb-4 px-4 pb-2">
-                    <input  class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="name" placeholder="Imię i nazwisko*" value="{{ old('name') }}" required />
-                    @error('name')
-                        <div class="text-red-500">
+               <div class="flex flex-col mb-2 px-4">
+                    <label for="name" class="block mb-2 text-sm">Imię*</label>
+                    <input  class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="name"  value="{{ old('name') }}" required />
+                    <span id="nameError" class="text-red-500 text-xs">
+                        @error('name') 
                             {{$message }}
-                        </div>
-                    @enderror
+                        @enderror
+                    </span>
                 </div>
-               <div class="flex flex-col mb-4 px-4 pb-2">
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="username" placeholder="Nazwa użytkownika" value="{{ old('username') }}" required />
-                    @error('username')                       
-                        <div class="text-red-500">
-                            @if($message ==='Pole username już istnieje.')
-                                Nazwa użytkownika jest zajęta
-                             @else
-                                {{$message}}
-                            @endif</div>
-                    @enderror
+               <div class="flex flex-col mb-2 px-4">
+                    <label for="username" class="block mb-2 text-sm">Nazwa użytkownika*</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="username" value="{{ old('username') }}" required />
+                    <span id="usernameError" class="text-red-500 text-xs">
+                        @error('username')                       
+                            <div class="text-red-500">
+                                @if($message ==='Taki login już istnieje.')
+                                    Nazwa użytkownika jest zajęta
+                                @else
+                                    {{$message}}
+                                @endif</div>
+                        @enderror
+                    </span>
                 </div>
-                <div class="flex flex-col mb-4 px-4 pb-2">
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="email" name="email" placeholder="Email*"  value="{{ old('email') }}" required />
-                    @error('email')
-                        <div class="text-red-500">{{$message }}</div>
-                    @enderror
+                <div class="flex flex-col mb-2 px-4">
+                    <label for="email" class="block mb-2 text-sm">E-mail*</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="email" name="email" value="{{ old('email') }}" required />
+                    <span id="emailError" class="text-red-500 text-xs">
+                        @error('email')
+                            <div class="text-red-500">{{$message }}</div>
+                        @enderror
+                    </span>
                 </div>
-                <div class="flex flex-col mb-4 px-4 pb-2">
-                <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="password" name="password" placeholder="Hasło*" required/>
-                    @error('password')
-                        <div class="text-red-500">
+                <div class="flex flex-col mb-2 px-4 relative">
+                    <label for="password" class="block mb-2 text-sm">Hasło*</label>
+                    <div class="relative">
+                        <span class="hidden whitespace-nowrap">XXXXXXXXXXXXXXXX</span>
+                        <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2 pr-12" type="password" name="password" required />
+                        <button id="toggleBtn" type="button" class="absolute top-1/2 right-2 transform -translate-y-1/2 focus:outline-none">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    <span id="passwordError" class="text-red-500 text-xs">
+                        @error('password')
                             @if ($message === 'Pole password musi mieć co najmniej 8 znaków.')
                                 Hasło musi mieć co najmniej 8 znaków.
                             @elseif($message === 'Potwierdzenie pola password nie zgadza się.')
@@ -69,28 +83,21 @@
                             @else
                                 {{$message}}
                             @endif
-                        </div>
-                    @enderror
-                </div>
-                <div class="flex flex-col mb-4 px-4 pb-2">
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="password" name="password_confirmation" placeholder="Wpisz ponownie hasło*" />                  
+                        @enderror
+                    </span>
                 </div>
                 <div class="flex justify-center items-center mb-4">
-                    
                     <p>Akceptuję regulamin sklepu internetowego &ensp;</p>
                     <input type="checkbox" name="terms" required/>
                     @error('terms')
-                        <div class="text-red-500">{{ $message }}</div>
+                        <div class="text-red-500 text-xs">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex justify-center mt-10">
                     <button id="submitBtn" class="mx-4 h-12 w-screen md:w-full md:rounded-md text-xl text-[#7F9799] bg-[#D8DFE0] font-semibold" type="submit">{{__('Zarejestruj się')}}</button>
                 </div>
             </form>
-
-        </div>
-
-                    
+        </div>            
         <div class=" flex flex-col items-center justify-center text-lg bg-gradient-to-r from-cyan-500 to-blue-500 pt-8">
             <h3 class="text-white">Lub zaloguj się za pomocą: </h3>
             <div class="flex justify-center  text-2xl">
