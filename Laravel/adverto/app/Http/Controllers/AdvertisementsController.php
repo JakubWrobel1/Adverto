@@ -60,6 +60,11 @@ class AdvertisementsController extends Controller
     {
         return view('advertisements.result-ad');
     }
+    public function advertisementDelete(Advertisement $advertisement)
+    {
+        $advertisement->delete();
+        return redirect('welcome');
+    }
     public function advertisementSearch(Request $request)
     {
         $query = $request->input('query');
