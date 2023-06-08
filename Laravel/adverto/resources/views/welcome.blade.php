@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Adverto - Serwis ogłoszeniowy')
 @section('content')
-<form action="search.php" method="GET" class="search-form">
+<form action="{{route('advertisements.advertisementSearch')}}" method="GET" class="search-form">
     <div class="flex border-2 border-white md:px-56 py-12 bg-[#f2f4f5]">
         <i class="fa fa-magnifying-glass pt-5 text-[#6b7280] p-4 bg-white"></i>
-        <input type="search" name="search" placeholder="Wyszukaj..." class="w-screen border-none focus:outline-none focus:ring-0 h-14 flex bg-white p-2 w-11/12">                   
+        <input type="search" name="query" placeholder="Wyszukaj..." class="w-screen border-none focus:outline-none focus:ring-0 h-14 flex bg-white p-2 w-11/12">                   
         <button type="submit" class="pr-5 bg-white">
             <i class="fa fa-search bg-white text-xl"></i>
         </button>

@@ -70,6 +70,10 @@ Route::get('/ogloszenie/{id}', [AdvertisementsController::class, 'show'])->name(
 
 Route::get('/moje-ogloszenia', [AdvertisementsController::class, 'myAdvertisements'])->name('advertisements.myAdvertisements');
 
+Route::get('/ogloszenia', [AdvertisementsController::class, 'search'])->name('advertisements.search');
+
+Route::get('/ogloszenia', [AdvertisementsController::class, 'advertisementSearch'])->name('advertisements.advertisementSearch');
+
 Route::get('/users', [UserController:: class, 'index'])->name('users.show');
 
 Route::get('/users/search', [UserController::class, 'userSearch'])->name('users.search');
