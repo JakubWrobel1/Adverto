@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Location;
+use Spatie\FlareClient\View;
 
 class AdvertisementsController extends Controller
 {
@@ -54,6 +55,18 @@ class AdvertisementsController extends Controller
         $advertisement = Advertisement::findOrFail($id);
 
         return view('advertisements.show', compact('advertisement'));
+    }
+    public function search()
+    {
+        return view('advertisements.result-ad');
+    }
+    public function advertisementSearch(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $advertisements = Advertisement::where('title', 'like', "%$query%")
+                    ->get();
+        return view('advertisements.result-ad', compact('advertisements'));
     }
 
 }
