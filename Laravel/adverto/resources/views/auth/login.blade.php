@@ -31,18 +31,28 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="flex flex-col mb-4 px-4 pb-2">
-                    <label for="login" class="block mb-2 text-sm">E-mail</label>
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="text" name="login" placeholder="Login/e-mail" required/>
+                    <label for="login" class="block mb-2 text-sm">Login/e-mail</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm" type="text" name="login" required/>
+                    <span id="loginError" class="text-red-500 text-xs"></span>
                 </div>
                 <div class="flex flex-col mb-4 px-4">
-                    <label for="password" class="block mb-2 text-sm">Hasło</label>
-                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="password" name="password" placeholder="Hasło" required />
-                    @error('login')
-                        <div class="text-red-500">{{$message }}</div>
-                    @enderror
-                    @error('password')
-                        <div class="alert alert-danger">{{$message }}</div>
-                    @enderror
+                    <label for="password" class="block mb-2 text-sm">Hasło*</label>
+                    <div class="relative">
+                        <span class="hidden whitespace-nowrap">XXXXXXXXXXXXXXXX</span>
+                        <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2 pr-12" type="password" name="password" required />
+                        <button id="toggleBtn" type="button" class="absolute top-1/2 right-2 transform -translate-y-1/2 focus:outline-none">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                        <span id="passwordError" class="text-red-500 text-xs"></span>
+                    </div>
+                    <span id="nameError" class="text-red-500 text-xs">
+                        @error('login')
+                            <div class="text-red-500">{{$message }}</div>
+                        @enderror
+                        @error('password')
+                            <div class="alert alert-danger">{{$message }}</div>
+                        @enderror
+                    </span>
                 </div>
                 @if (Route::has('password.request'))
                 <a class="text-lg hover:text-cyan-600 transition duration-700 p-4 text-sm font-bold" href="{{ route('password.request') }}">
