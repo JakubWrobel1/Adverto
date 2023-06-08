@@ -74,6 +74,8 @@ Route::get('/ogloszenia', [AdvertisementsController::class, 'search'])->name('ad
 
 Route::get('/ogloszenia', [AdvertisementsController::class, 'advertisementSearch'])->name('advertisements.advertisementSearch');
 
+Route::delete('/ogloszenia/{advertisement}', [AdvertisementsController:: class, 'advertisementDelete'])->name('advertisement.delete');
+
 Route::get('/users', [UserController:: class, 'index'])->name('users.show');
 
 Route::get('/users/search', [UserController::class, 'userSearch'])->name('users.search');

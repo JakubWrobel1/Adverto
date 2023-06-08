@@ -47,4 +47,16 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function advertisements()
+{
+    return $this->hasMany(Advertisement::class);
+}
+protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function ($user) {
+        $user->advertisements()->delete();
+    });
+}
 }
