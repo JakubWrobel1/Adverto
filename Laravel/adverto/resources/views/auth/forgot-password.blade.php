@@ -33,9 +33,9 @@
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
-                <div class=" flex items-center justify-end mt-4 ">
+                <div class=" flex justify-center mt-4 ">
                     <button class="w-screen md:w-1/2 hover:bg-cyan-400 bg-blue-500 md:rounded-full text-xl md:text-lg text-white transition duration-700 transform hover:scale-95" type="submit">
-                        {{ __('Email Password Reset Link') }}
+                        {{ __('Wyślij link do zresetowania hasła') }}
                     </button>
                 </div>
         </form>

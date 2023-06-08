@@ -32,7 +32,13 @@
                     <td class="border border-gray-300 p-2  break-all">{{ $user->email }}</td>
                     <td class="p-2 flex justify-center">
                         <a href="{{ route('users.edit', $user->id) }}" class="m-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors duration-300">Edytuj</a>
+                        <form action="{{ route('users.delete', $user) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="m-2 px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 transition-colors duration-300">Usuń</button>
+                    </form>
                     </td>
+                    
                 </tr>
             @endforeach
         </tbody>

@@ -31,6 +31,12 @@ public function userEdit(User $user)
 {
     return view('edit', compact('user'));
 }
+
+public function userDelete(User $user)
+{
+    $user->delete();
+    return redirect('users');
+}
 public function userUpdate(Request $request, User $user)
 {
     $request->validate([

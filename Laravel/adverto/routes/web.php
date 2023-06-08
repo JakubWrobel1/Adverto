@@ -80,4 +80,5 @@ Route::middleware('admin')->get('/users', [UserController:: class, 'index']);
 
 Route::put('/users/{user}', [UserController::class, 'userUpdate'])->name('users.update');
 
+Route::delete('/users/{user}', [UserController::class, 'userDelete'])->name('users.delete');
 require __DIR__.'/auth.php';
