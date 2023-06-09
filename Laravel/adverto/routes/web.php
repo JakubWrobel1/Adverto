@@ -68,6 +68,8 @@ Route::post('/ogloszenia', [AdvertisementsController::class, 'store']);
 
 Route::get('/ogloszenie/{id}', [AdvertisementsController::class, 'show'])->name('advertisements.show');
 
+Route::get('/welcome', [AdvertisementsController::class, 'showByNewest'])->name('advertisements.showByNewest');
+
 Route::get('/moje-ogloszenia', [AdvertisementsController::class, 'myAdvertisements'])->name('advertisements.myAdvertisements');
 
 Route::get('/ogloszenia', [AdvertisementsController::class, 'search'])->name('advertisements.search');
