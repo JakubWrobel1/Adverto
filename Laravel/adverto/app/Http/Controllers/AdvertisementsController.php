@@ -20,6 +20,15 @@ class AdvertisementsController extends Controller
         return view('advertisements.index', compact('advertisements', 'category'));
     }
 
+    public function showByNewest()
+    {
+        $advertisements = Advertisement::select('id', 'title', 'price', 'location_id')
+        ->orderBy('created_at', 'desc')
+        ->take(20)
+        ->get();
+        return view('welcome', compact('advertisements'));
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
