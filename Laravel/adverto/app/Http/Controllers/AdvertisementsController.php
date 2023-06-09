@@ -89,7 +89,7 @@ class AdvertisementsController extends Controller
     public function advertisementDelete(Advertisement $advertisement)
     {
         $advertisement->delete();
-        return redirect()->route('myAdvertisements')->with('success', 'Advertisement deleted successfully.');
+        return redirect()->route('advertisements.myAdvertisements')->with('success', 'Advertisement deleted successfully.');
     }
     public function advertisementSearch(Request $request)
     {
@@ -101,6 +101,12 @@ class AdvertisementsController extends Controller
     }
     public function edit($id)
 {
+    $advertisement = Advertisement::findOrFail($id);
+
+    
+    if ($advertisement->user_id !== auth()->user()->id) {
+        abort(403, 'Nie masz uprawnień do edycji tego ogłoszenia.');
+    }
     $advertisement = Advertisement::findOrFail($id);
     // Pobierz kategorie, lokalizacje, obrazy lub inne dane, które są potrzebne do wyświetlenia formularza edycji
 
