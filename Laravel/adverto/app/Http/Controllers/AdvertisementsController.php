@@ -99,5 +99,29 @@ class AdvertisementsController extends Controller
                     ->get();
         return view('advertisements.result-ad', compact('advertisements'));
     }
+    public function edit($id)
+{
+    $advertisement = Advertisement::findOrFail($id);
+    // Pobierz kategorie, lokalizacje, obrazy lub inne dane, które są potrzebne do wyświetlenia formularza edycji
+
+    return view('advertisements.edit', compact('advertisement'));
+}
+public function update($id, Request $request)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|max:100',
+        'description' => 'required',
+        // Pozostałe wymagane pola
+    ]);
+
+    $advertisement = Advertisement::findOrFail($id);
+    $advertisement->title = $validatedData['title'];
+    $advertisement->description = $validatedData['description'];
+    // Zaktualizuj pozostałe pola ogłoszenia
+
+    $advertisement->save();
+
+    return redirect()->route('advertisements.show', $advertisement->id)->with('success', 'Ogłoszenie zaktualizowane pomyślnie.');
+}
 
 }

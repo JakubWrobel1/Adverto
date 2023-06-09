@@ -78,6 +78,11 @@ Route::get('/ogloszenia', [AdvertisementsController::class, 'advertisementSearch
 
 Route::delete('/ogloszenia/{advertisement}', [AdvertisementsController:: class, 'advertisementDelete'])->name('advertisement.delete');
 
+Route::get('/ogloszenie/{id}/edit', [AdvertisementsController::class, 'edit'])->name('advertisements.edit');
+
+Route::put('/ogloszenie/{id}', [AdvertisementsController::class, 'update'])->name('advertisements.update');
+
+
 Route::get('/users', [UserController:: class, 'index'])->name('users.show');
 
 Route::get('/users/search', [UserController::class, 'userSearch'])->name('users.search');

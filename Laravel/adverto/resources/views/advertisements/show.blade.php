@@ -18,4 +18,6 @@
                         <button type="submit" class="m-2 px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600 transition-colors duration-300">Usuń</button>
                     </form>
                                     @endif
+                                    <a href="{{ route('advertisements.edit', $advertisement->id) }}" class="btn btn-primary">Edytuj</a>
+
 @endsection
