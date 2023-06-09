@@ -5,7 +5,7 @@
         <div class="md:focus:ring-0 md:w-auto w-screen flex-col items-center p-10">
             <h1 class="text-3xl font-bold mb-4">Dodaj ogłoszenie</h1>
 
-            <form action="/ogloszenia" method="POST" class="">
+            <form action="/ogloszenia" method="POST" class="" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4 bg-white p-8 rounded-md">
                     <label for="title" class="block font-bold mb-2 text-sm">Tytuł*</label>
@@ -21,6 +21,11 @@
                         <option value="5">Sport i Hobby</option>
                         <option value="6">Rowery</option>
                     </select>
+                </div>
+
+                <div class="mb-4 bg-white p-8 rounded-md">
+                    <label for="image" class="block font-bold mb-2 text-sm">Zdjęcie*</label>
+                    <input type="file" name="images[]" multiple class="w-full {{ $errors->has('image') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]">
                 </div>
 
                 <div class="mb-4 bg-white p-8 rounded-md">

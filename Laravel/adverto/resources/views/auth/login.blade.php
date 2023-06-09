@@ -14,7 +14,7 @@
     <div class="bg-white w-screen md:max-w-md md:h-4/5 h-screen md:rounded-sm  flex flex-col shadow-2xl">
         <div class="justify-center p-3 flex-grow">
             <div class=" mb-5 p-2">
-                <a href="{{url('welcome')}}">
+                <a href="{{url('/')}}">
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
