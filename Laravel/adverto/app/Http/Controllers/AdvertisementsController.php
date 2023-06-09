@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Image;
 use Spatie\FlareClient\View;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertisementsController extends Controller
 {
@@ -35,6 +37,8 @@ class AdvertisementsController extends Controller
             'price' => 'required|numeric',
             'category_id' => 'required',
             'location_id' => 'required',
+            'images' => 'array',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $advertisement = new Advertisement();
@@ -48,16 +52,29 @@ class AdvertisementsController extends Controller
 
         $advertisement->save();
 
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path('images'), $imageName);
+
+                $imageModel = new Image();
+                $imageModel->url = $imageName;
+                $imageModel->ad_id = $advertisement->id;
+                $imageModel->save();
+            }
+        }
+
         return redirect()->back()->with('success', 'Advertisement added successfully.');
     }
 
     public function myAdvertisements()
     {
         $user = auth()->user();
-        $advertisements = Advertisement::where('user_id', $user->id)->get();
+        $advertisements = Advertisement::with('images')->where('user_id', $user->id)->get();
 
         return view('advertisements.myAdvertisements', compact('advertisements'));
     }
+
 
     public function show($id)
     {
@@ -72,7 +89,7 @@ class AdvertisementsController extends Controller
     public function advertisementDelete(Advertisement $advertisement)
     {
         $advertisement->delete();
-        return redirect('welcome');
+        return redirect()->route('myAdvertisements')->with('success', 'Advertisement deleted successfully.');
     }
     public function advertisementSearch(Request $request)
     {

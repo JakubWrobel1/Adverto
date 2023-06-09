@@ -14,4 +14,9 @@ class Advertisement extends Model
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'ad_id');
+    }
 }
