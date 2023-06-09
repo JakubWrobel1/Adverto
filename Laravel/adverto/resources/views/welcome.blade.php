@@ -94,87 +94,19 @@
 <div class="bg-[#f2f4f5]">
     <span class="flex flex-col items-center text-[#002f34] text-4xl font-bold py-14">Najnowsze ogłoszenia</span>
     <ul class="m-5 px-5 pb-5 grid gap-4 grid-cols-1 md:grid-cols-4 text-black">
+        @foreach($advertisements as $advertisement)
         <li class="w-auto">
             <div class="p-2 bg-white rounded-lg">
                 <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                <a href="{{ route('advertisements.show', $advertisement->id)}}">
+                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
                 </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
+                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400"></a>{{ $advertisement->title }}</div>
+                <div class="text-sm">{{ $advertisement->location->name }}</div>
+                <div class="p2 text-lg">{{ $advertisement->price }}</div>
             </div>
         </li>
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>
-        <li class="w-auto">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-
-        </li> 
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li> 
-        <li class="w-auto md:w-30">
-            <div class="p-2 bg-white rounded-lg">
-                <div>
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car">
-                </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400">Nazwa produktu</a></div>
-                <div class="text-sm">Miejsce i data</div>
-                <div class="p2 text-lg">cena</div>
-            </div>
-        </li>  
+        @endforeach
     </ul>  
 </div>
 @endsection
