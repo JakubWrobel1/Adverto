@@ -39,6 +39,12 @@
                                         href="{{route('my-profile')}}"
                                         >Mój profil</a>
                                     </li>
+                                    <li class="w-full">
+                                        <a
+                                        class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"
+                                        href="{{ route('advertisements.myAdvertisements') }}"
+                                        >Moje ogłoszenia</a>
+                                    </li>                                  
                                     <li>
                                         <a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap"href="{{ route('my-account.edit') }}">Ustawienia</a>
                                     </li>
