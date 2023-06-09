@@ -19,7 +19,7 @@
     </div>
     <div class="pt-4 mb-52 md:p-6 px-36 bg-[#f2f4f5]">
         <ul class="m-5 p-5 grid gap-4 grid-cols-1 text-black">
-            @foreach($advertisements as $advertisement)
+            @forelse($advertisements as $advertisement)
                 <li class="w-auto flex flex-row bg-white mx-36">
                     <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg flex items-center">
                         @if ($advertisement->images->isNotEmpty())
@@ -34,7 +34,13 @@
                         <div class="p-4 pr-6 text-right text-base font-bold">{{ $advertisement->price }} zł</div>
                     </a>
                 </li>
-            @endforeach
+                @empty
+                <li class="w-auto flex flex-row mx-36">
+                    <div class="p-2 rounded-lg flex items-center">
+                        <div class="text-lg font-medium">Brak ogłoszeń</div>
+                    </div>
+                </li>
+            @endforelse
         </ul>
     </div>
 @endsection
