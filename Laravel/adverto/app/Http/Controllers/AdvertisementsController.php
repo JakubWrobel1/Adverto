@@ -88,6 +88,14 @@ class AdvertisementsController extends Controller
     }
     public function advertisementDelete(Advertisement $advertisement)
     {
+        foreach ($advertisement->images as $image) {
+            // Usuń plik z serwera
+            Storage::delete('images/' . $image->url);
+    
+            // Usuń rekord z bazy danych
+            $image->delete();
+        }
+    
         $advertisement->delete();
         return redirect()->route('advertisements.myAdvertisements')->with('success', 'Advertisement deleted successfully.');
     }
