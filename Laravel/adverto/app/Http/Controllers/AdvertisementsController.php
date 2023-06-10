@@ -38,7 +38,7 @@ class AdvertisementsController extends Controller
             'category_id' => 'required',
             'location_id' => 'required',
             'images' => 'array',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
         ]);
 
         $advertisement = new Advertisement();
