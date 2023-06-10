@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <p class="pb-5 font-bold">Opis:</p>
-                        <p>{{ $advertisement->description }}</p>
+                        <p class="whitespace-pre-line"">{{ $advertisement->description }}</p>
                     </div>
                 </div>
             </div>

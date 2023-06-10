@@ -20,9 +20,7 @@ use App\Http\Controllers\GoogleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/welcome');
 
 Route::get('/my-account', function () {
     return view('my-account');
