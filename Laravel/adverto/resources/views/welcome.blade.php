@@ -98,12 +98,17 @@
         <li class="w-auto">
             <div class="p-2 bg-white rounded-lg">
                 <div>
-                <a href="{{ route('advertisements.show', $advertisement->id)}}">
-                    <img class="h-full w-full" src="{{ asset('img/images/icons/car.png') }}" alt="car"></a>
+                <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg flex items-center">
+                        @if ($advertisement->images->isNotEmpty())
+                            <img class="h-full w-80" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+                        @else
+                            <img class="h-full w-60 bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                        @endif
                 </div>
-                <div class="flex justify-center p-2"><a class="truncate hover:text-slate-400"></a>{{ $advertisement->title }}</div>
+                <div class="flex justify-center p-2"><a href="{{ route('advertisements.show', $advertisement->id) }}" class="truncate hover:text-slate-400">{{ $advertisement->title }}</a></div>
                 <div class="text-sm">{{ $advertisement->location->name }}</div>
                 <div class="p2 text-lg">{{ $advertisement->price }}</div>
+                </a>
             </div>
         </li>
         @endforeach

@@ -7,6 +7,7 @@ use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Image;
+use Illuminate\Support\Facades\File; 
 use Spatie\FlareClient\View;
 use Illuminate\Support\Facades\Storage;
 
@@ -90,7 +91,10 @@ class AdvertisementsController extends Controller
     {
         foreach ($advertisement->images as $image) {
             // Usuń plik z serwera
-            Storage::delete('images/' . $image->url);
+            $imagePath = public_path('images/' . $image->url);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
     
             // Usuń rekord z bazy danych
             $image->delete();
