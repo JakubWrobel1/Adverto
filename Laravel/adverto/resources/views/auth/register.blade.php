@@ -17,7 +17,7 @@
     <div class="bg-white w-screen  md:max-w-md md:h-4/5 md:rounded-lg  flex flex-col md:shadow-2xl">
         <div class="justify-center p-3 flex-grow">
             <div class="mb-5 p-2">
-                <a href="{{url('/')}}">
+                <a href="{{url('welcome')}}">
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
             </div>
@@ -65,6 +65,16 @@
                         @enderror
                     </span>
                 </div>
+                <div class="flex flex-col mb-2 px-4">
+    <label for="phone_number" class="block mb-2 text-sm">Numer telefonu*</label>
+    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="tel" name="phone_number" value="{{ old('phone_number') }}" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{3}" required />
+    <span id="phoneError" class="text-red-500 text-xs">
+        @error('phone_number')
+            <div class="text-red-500">{{ $message }}</div>
+        @enderror
+    </span>
+</div>
+
                 <div class="flex flex-col mb-2 px-4 relative">
                     <label for="password" class="block mb-2 text-sm">Hasło*</label>
                     <div class="relative">
