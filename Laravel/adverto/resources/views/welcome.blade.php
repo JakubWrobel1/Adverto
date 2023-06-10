@@ -98,16 +98,20 @@
         <li class="w-auto">
             <div class="p-2 bg-white rounded-lg">
                 <div>
-                <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg flex items-center">
+                <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg">
                         @if ($advertisement->images->isNotEmpty())
-                            <img class="h-full w-80" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+                            <div class="flex items-center justify-center aspect-w-1 aspect-h1">
+                                <img src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image" class="object-cover w-full h-56 bg-gray-200">
+                            </div>
                         @else
-                            <img class="h-full w-60 bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                            <div class="flex items-center justify-center">
+                                <img class="object-contain w-full h-56 bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                            </div>
                         @endif
                 </div>
                 <div class="flex justify-center p-2"><a href="{{ route('advertisements.show', $advertisement->id) }}" class="truncate hover:text-slate-400">{{ $advertisement->title }}</a></div>
                 <div class="text-sm">{{ $advertisement->location->name }}</div>
-                <div class="p2 text-lg">{{ $advertisement->price }}</div>
+                <div class="p2 text-lg">{{ $advertisement->price }} zł</div>
                 </a>
             </div>
         </li>

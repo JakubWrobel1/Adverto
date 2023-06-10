@@ -36,11 +36,13 @@ class AdvertisementsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|max:1000000',
             'category_id' => 'required',
             'location_id' => 'required',
-            'images' => 'array',
+            'images' => ['array'],
             'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
+        ], [
+            'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
         ]);
 
         $advertisement = new Advertisement();
