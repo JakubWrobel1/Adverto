@@ -15,7 +15,11 @@
     @foreach($advertisements as $advertisement)
                 <li class="w-auto flex flex-row bg-white mx-36">
                         <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block p-2 bg-white rounded-lg flex items-center">
-                            <img class="h-full w-60" src="{{ asset('img/images/icons/car.png') }}" alt="car">
+                        @if ($advertisement->images->isNotEmpty())
+                            <img class="h-full w-80" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+                        @else
+                            <img class="h-full w-60 bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                        @endif
                             <div class="ml-4 flex-grow">
                                 <div class="text-xl font-medium"><a class="truncate hover:text-slate-400">{{ $advertisement->title }}</a></div>
                                 <div class="text-sm"><i class="fa fa-location-dot px-2"></i>{{ $advertisement->location->name }}</div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\Category;
@@ -80,8 +81,8 @@ class AdvertisementsController extends Controller
     public function show($id)
     {
         $advertisement = Advertisement::findOrFail($id);
-
-        return view('advertisements.show', compact('advertisement'));
+        $user = User::findOrFail($advertisement->user_id);
+        return view('advertisements.show', compact('advertisement', 'user'));
     }
     public function search()
     {

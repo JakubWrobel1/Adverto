@@ -60,7 +60,7 @@ class MyAccount extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
-            'phone_number' => ['string','numeric', 'digits:9'],
+            'phone_number' => ['string', 'max:20', 'nullable', 'unique:users,phone_number,'.$user->id],
             'old_password' => ['nullable', function ($attribute, $value, $fail) use ($user) {
                 if (!Hash::check($value, $user->password)) {
                     $fail('Obecne hasło jest nieprawidłowe.');
