@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'provider_id',
         'provider_token'
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,6 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
 protected static function boot()
 {
     parent::boot();
+
+    self::saving(function ($model) {
+        $model->phone_number = preg_replace('/(\d{3})(\d{3})(\d{3})/', '$1-$2-$3', $model->phone_number);
+    });
 
     static::deleting(function ($user) {
         $user->advertisements()->delete();

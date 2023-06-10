@@ -41,16 +41,16 @@ public function userUpdate(Request $request, User $user)
 {
     $request->validate([
         'name' => 'required',
-        'username' => 'nullable|unique:users,username,' . $user->id,
+        'username' => 'nullable|unique:users,username,' . $user->id,'phone_number' => 'nullable|unique:users,phone_number,'.$user->id,
         'email' => 'required|unique:users,email,' . $user->id
     ]);
 
     $user->update([
         'name' => $request->input('name'),
         'username' => $request->input('username'),
+        'phone_number' => $request->input('phone_number'),
         'email' => $request->input('email'),
     ]);
-
     return redirect('users');
 }
 

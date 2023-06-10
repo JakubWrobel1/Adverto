@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Image;
+use Illuminate\Support\Facades\File; 
 use Spatie\FlareClient\View;
 use Illuminate\Support\Facades\Storage;
 
@@ -79,8 +81,8 @@ class AdvertisementsController extends Controller
     public function show($id)
     {
         $advertisement = Advertisement::findOrFail($id);
-
-        return view('advertisements.show', compact('advertisement'));
+        $user = User::findOrFail($advertisement->user_id);
+        return view('advertisements.show', compact('advertisement', 'user'));
     }
     public function search()
     {
@@ -88,8 +90,19 @@ class AdvertisementsController extends Controller
     }
     public function advertisementDelete(Advertisement $advertisement)
     {
+        foreach ($advertisement->images as $image) {
+            // Usuń plik z serwera
+            $imagePath = public_path('images/' . $image->url);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+    
+            // Usuń rekord z bazy danych
+            $image->delete();
+        }
+    
         $advertisement->delete();
-        return redirect()->route('myAdvertisements')->with('success', 'Advertisement deleted successfully.');
+        return redirect()->route('advertisements.myAdvertisements')->with('success', 'Advertisement deleted successfully.');
     }
     public function advertisementSearch(Request $request)
     {
@@ -99,5 +112,35 @@ class AdvertisementsController extends Controller
                     ->get();
         return view('advertisements.result-ad', compact('advertisements'));
     }
+    public function edit($id)
+{
+    $advertisement = Advertisement::findOrFail($id);
+
+    
+    if ($advertisement->user_id !== auth()->user()->id) {
+        abort(403, 'Nie masz uprawnień do edycji tego ogłoszenia.');
+    }
+    $advertisement = Advertisement::findOrFail($id);
+    // Pobierz kategorie, lokalizacje, obrazy lub inne dane, które są potrzebne do wyświetlenia formularza edycji
+
+    return view('advertisements.edit', compact('advertisement'));
+}
+public function update($id, Request $request)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|max:100',
+        'description' => 'required',
+        // Pozostałe wymagane pola
+    ]);
+
+    $advertisement = Advertisement::findOrFail($id);
+    $advertisement->title = $validatedData['title'];
+    $advertisement->description = $validatedData['description'];
+    // Zaktualizuj pozostałe pola ogłoszenia
+
+    $advertisement->save();
+
+    return redirect()->route('advertisements.show', $advertisement->id)->with('success', 'Ogłoszenie zaktualizowane pomyślnie.');
+}
 
 }
