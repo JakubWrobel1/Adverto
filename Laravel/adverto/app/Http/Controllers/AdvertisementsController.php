@@ -131,15 +131,33 @@ public function update($id, Request $request)
 {
     $validatedData = $request->validate([
         'title' => 'required|max:100',
-        'description' => 'required',
-        // Pozostałe wymagane pola
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category_id' => 'required',
+            'location_id' => 'required',
+            'images' => 'array',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
     ]);
-
+    
     $advertisement = Advertisement::findOrFail($id);
+    
     $advertisement->title = $validatedData['title'];
     $advertisement->description = $validatedData['description'];
+    $advertisement->price = $validatedData['price'];
+    $advertisement->category_id = $validatedData['category_id'];
+    $advertisement->location_id = $validatedData['location_id'];
     // Zaktualizuj pozostałe pola ogłoszenia
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('images'), $imageName);
 
+            $imageModel = new Image();
+            $imageModel->url = $imageName;
+            $imageModel->ad_id = $advertisement->id;
+            $imageModel->save();
+        }
+    }
     $advertisement->save();
 
     return redirect()->route('advertisements.show', $advertisement->id)->with('success', 'Ogłoszenie zaktualizowane pomyślnie.');
