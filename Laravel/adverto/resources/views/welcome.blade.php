@@ -27,7 +27,7 @@
         </li>
         <li>
             <div class="flex justify-center">
-                <a href="{{ url('/ads/Dom_i_ogrod') }}">
+                <a href="{{ url('/ads/Dom%20i%20ogród') }}">
                     <div class="w-16 h-16 flex items-center justify-center bg-blue-500 rounded-full shadow-md transition-transform duration-300 hover:scale-110">
                         <i class="fa fa-house text-3xl bg-blue-500 text-white p-4 rounded-full shadow-md transition-transform duration-300 hover:scale-110 w-18 h-18"></i>
                     </div>      
@@ -65,7 +65,7 @@
         <li>
             <div>
                 <div class="flex justify-center">
-                    <a href="{{ url('/ads/Sport_i_Hobby') }}">
+                    <a href="{{ url('/ads/Sport%20i%20Hobby') }}">
                         <div class="w-16 h-16 flex items-center justify-center bg-blue-500 rounded-full shadow-md transition-transform duration-300 hover:scale-110">
                             <i class="fa-solid fa-bowling-ball text-4xl bg-blue-500 text-white p-4 rounded-full shadow-md transition-transform duration-300 hover:scale-110 w-18 h-18"></i>
                         </div>
