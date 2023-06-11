@@ -6,6 +6,7 @@
     <title>Rejestracja - Adverto</title>
     
     @vite('resources/css/app.css')
+    <link rel="icon" href="{{asset('img/images/icons/favicon.png')}}">
     <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{{asset('js/register.js') }}"></script>
