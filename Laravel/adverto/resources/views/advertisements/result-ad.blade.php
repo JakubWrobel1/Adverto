@@ -12,7 +12,8 @@
 @if($advertisements->isEmpty())
     <p class="text-center text-gray-500 text-xl">Brak wyników</p>
 @else
-    @foreach($advertisements as $advertisement)
+
+    @foreach($advertisements as $advertisement)<!--
     <div class="p-2">
     <li class="w-auto flex flex-row bg-white md:mx-36">
         <a href="{{ route('advertisements.show', $advertisement->id) }}" class="block  bg-white rounded-lg flex items-center">
@@ -27,6 +28,30 @@
             </div>
             <div class="p-4 md:pr-6 text-right text-base font-bold w-1/3">{{ $advertisement->price }} zł</div>
         </a>
+    </li>
+</div> -->
+<!-- grid -->
+<div class="p-2">
+    <li class="flex justify-center items-center">
+        <div class="grid grid-cols-3 md:grid-cols-5">
+        <a href="{{ route('advertisements.show', $advertisement->id) }}" class=" flex justify-center items-center">
+            @if ($advertisement->images->isNotEmpty())
+                <img class="h-full w-60 col-span-1" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+            @else
+                <img class="h-full w-60 bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+            @endif
+            <div class="ml-4 flex-grow md:w-96 text-ellipsis overflow-hidden md:col-span-3">
+                <div class="text-sm md:text-xl font-medium"><a href="{{ route('advertisements.show', $advertisement->id) }}"class="hover:text-slate-400 ">{{ $advertisement->title }}</a></div>
+                <div class="text-sm col-span-1" ><i class="fa fa-location-dot px-2"></i>{{ $advertisement->location->name }}</div>
+            </div>
+            <div class="relative">
+  <!-- Pozostała zawartość -->
+  <div class="absolute top-0 right-0   md:pr-6 text-right text-base font-bold">
+    {{ $advertisement->price }} zł
+  </div>
+</div>
+        </a>
+    </div>
     </li>
 </div>
 
