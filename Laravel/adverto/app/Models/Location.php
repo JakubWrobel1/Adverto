@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    // Define the table associated with the model
+
+    public $timestamps = false;
+
     protected $table = 'locations';
 
-    // Define the fillable fields for mass assignment
-    protected $fillable = ['name', 'province', 'country'];
+    protected $fillable = ['address', 'city', 'province', 'country'];
 
-    // Rest of the model code...
 }
