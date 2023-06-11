@@ -26,6 +26,20 @@
                     @enderror
         </div>
 
+        <div class="mb-4">
+            <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Numer telefonu:</label>
+            <input type="text" name="phone_number" value="{{ $user->phone_number }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            @if ($errors->any())
+                    <div style="color: red;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+        </div>
+
         <div class="flex items-center justify-center mt-6">
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors duration-300">Zapisz</button>
         </div>
