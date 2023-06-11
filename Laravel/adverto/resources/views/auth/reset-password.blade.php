@@ -3,7 +3,7 @@
     
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rejestracja - Adverto</title>
+    <title>Reset hasła - Adverto</title>
     
     @vite('resources/css/app.css')
     <link rel="icon" href="{{asset('img/images/icons/favicon.png')}}">

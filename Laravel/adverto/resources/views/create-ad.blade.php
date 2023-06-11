@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Stwórz ogłoszenie')
 @section('content')
     <div class="grid grid-cols-1 gap-4 py-8 md:px-32 bg-[#f2f4f5]">
         <div class="md:focus:ring-0 md:w-auto w-screen flex-col items-center md:p-10">
