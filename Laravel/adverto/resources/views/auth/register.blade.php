@@ -69,9 +69,15 @@
     <label for="phone_number" class="block mb-2 text-sm">Numer telefonu*</label>
     <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="tel" name="phone_number" value="{{ old('phone_number') }}" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{3}" required />
     <span id="phoneError" class="text-red-500 text-xs">
-        @error('phone_number')
-            <div class="text-red-500">{{ $message }}</div>
-        @enderror
+    @if ($errors->any())
+                    <div style="color: red;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
     </span>
 </div>
 
