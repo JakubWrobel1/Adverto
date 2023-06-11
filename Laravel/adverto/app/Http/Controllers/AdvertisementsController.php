@@ -11,6 +11,9 @@ use App\Models\Image;
 use Illuminate\Support\Facades\File; 
 use Spatie\FlareClient\View;
 use Illuminate\Support\Facades\Storage;
+use GuzzleHttp\Client;
+use Illuminate\Validation\ValidationException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class AdvertisementsController extends Controller
 {
@@ -33,46 +36,50 @@ class AdvertisementsController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|max:100',
-            'description' => 'required',
-            'price' => 'required|numeric|max:1000000',
-            'category_id' => 'required',
-            'images' => ['array'],
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
-        ], [
-            'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'title' => 'required|max:100',
+                'description' => 'required',
+                'price' => 'required|numeric|max:1000000',
+                'category_id' => 'required',
+                'user_autocomplete_address' => 'required',
+                'images' => ['array'],
+                'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
+            ], [
+                'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
+            ]);
 
-        $location = new Location();
-        $location->city = $request->input('locality');
-        $location->province = $request->input('administrative_area_level_1');
-        $location->country = $request->input('country');
-        $location->save();
+            $location = new Location();
+            $location->city = $request->input('locality');
+            $location->province = $request->input('administrative_area_level_1');
+            $location->country = $request->input('country');
+            $location->save();
 
-        $advertisement = new Advertisement();
-        $advertisement->title = $validatedData['title'];
-        $advertisement->description = $validatedData['description'];
-        $advertisement->price = $validatedData['price'];
-        $advertisement->user_id = auth()->user()->id;
-        $advertisement->category_id = $validatedData['category_id'];
-        $advertisement->location_id = $location->id;
-        $advertisement->is_active = true;
-        $advertisement->save();
+            $advertisement = new Advertisement();
+            $advertisement->title = $validatedData['title'];
+            $advertisement->description = $validatedData['description'];
+            $advertisement->price = $validatedData['price'];
+            $advertisement->user_id = auth()->user()->id;
+            $advertisement->category_id = $validatedData['category_id'];
+            $advertisement->location_id = $location->id;
+            $advertisement->is_active = true;
+            $advertisement->save();
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imageName = time().'.'.$image->extension();
-                $image->move(public_path('images'), $imageName);
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    $imageName = time().'.'.$image->extension();
+                    $image->move(public_path('images'), $imageName);
 
-                $imageModel = new Image();
-                $imageModel->url = $imageName;
-                $imageModel->ad_id = $advertisement->id;
-                $imageModel->save();
+                    $imageModel = new Image();
+                    $imageModel->url = $imageName;
+                    $imageModel->ad_id = $advertisement->id;
+                    $imageModel->save();
+                }
             }
+            return redirect()->back()->with('success', 'Ogłoszenie dodane poprawnie.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Wprowadzono niepoprawną lokalizację.')->withInput();
         }
-
-        return redirect()->back()->with('success', 'Advertisement added successfully.');
     }
 
     public function myAdvertisements()
@@ -108,7 +115,7 @@ class AdvertisementsController extends Controller
         }
     
         $advertisement->delete();
-        return redirect()->route('advertisements.myAdvertisements')->with('success', 'Advertisement deleted successfully.');
+        return redirect()->route('advertisements.myAdvertisements')->with('success', 'Ogłoszenie usunięto poprawnie.');
     }
     public function advertisementSearch(Request $request)
     {
