@@ -1,7 +1,7 @@
 <!-- resources/views/advertisements/index.blade.php -->
 
 @extends('layouts.app')
-
+@section('title',  $category->name)
 @section('content')
     <h1 class="pt-5 pl-10 text-xl font-semibold text-[#3d3d3b]">Ogłoszenia w kategorii: {{ $category->name }}</h1>
     @if($advertisements->isEmpty())
