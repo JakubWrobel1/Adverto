@@ -46,5 +46,10 @@
             @endforeach
         </tbody>
     </table>
+    <div class="flex justify-center space-between p-5 m-5">
+    {{ $users->links() }}
+</div>
+    
 @endif
+
 @endsection

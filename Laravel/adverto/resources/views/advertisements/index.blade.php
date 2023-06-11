@@ -34,5 +34,9 @@
 </div>
 
     @endforeach
+    <div class="flex justify-center space-between p-5 m-5">
+    {{ $advertisements->links() }}
+</div>
+
 @endif
 @endsection
