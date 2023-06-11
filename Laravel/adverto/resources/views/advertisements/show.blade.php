@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title',  $advertisement->title)
 @section('content')
     <form action="{{ route('advertisements.advertisementSearch') }}" method="GET" class="search-form">
         <div class="flex border-2 border-white md:px-56 py-12 bg-[#f2f4f5]">

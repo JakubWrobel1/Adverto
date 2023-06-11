@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Edytuj użytkownika - '.$user->name)
 @section('content')
 <div class="p-5">
     <form action="{{ route('users.update', $user->id) }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
