@@ -34,7 +34,7 @@
                 </a>
             </div>
             <div class="flex justify-center p-2">
-                <a href="{{ url('/ads/Dom_i_ogrod') }}" class="truncate hover:bg-black hover:text-white text-base font-semibold">Dom i ogród</a>
+                <a href="{{ url('/ads/Dom%20i%20ogród') }}" class="truncate hover:bg-black hover:text-white text-base font-semibold">Dom i ogród</a>
             </div>
         </li>
         <li>
@@ -72,7 +72,7 @@
                     </a>
                 </div>
             <div class="flex justify-center p-2">
-                <a href="{{ url('/ads/Sport_i_Hobby') }}" class="truncate hover:bg-black hover:text-white text-base font-semibold">Sport i Hobby</a>
+                <a href="{{ url('/ads/Sport%20i%20Hobby') }}" class="truncate hover:bg-black hover:text-white text-base font-semibold">Sport i Hobby</a>
             </div>
         </li>
         <li>
