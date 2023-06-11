@@ -18,8 +18,8 @@
         </div>
     </div>
     @if($advertisements->isEmpty())
-    <p class="text-center text-gray-500 text-xl">Brak wyników</p>
-@else
+        <p class="text-center text-gray-500 text-xl">Brak wyników</p>
+    @else
 
     @foreach($advertisements as $advertisement)
 <div class="p-2 md:p-0 bg-[#f2f4f5]">
@@ -34,7 +34,7 @@
             <div class="ml-4 flex-grow md:w-96 text-ellipsis overflow-hidden md:col-span-3">
                 <div class="text-sm md:text-xl font-medium"><a href="{{ route('advertisements.show', $advertisement->id) }}"class="hover:text-slate-400 ">{{ $advertisement->title }}</a></div>
                 <div class="text-sm pb-2">{{ $advertisement->category->name }}</div>
-                <div class="text-sm col-span-1" ><i class="fa fa-location-dot px-2"></i>{{ $advertisement->location->name }}</div>
+                <div class="text-sm col-span-1" ><i class="fa fa-location-dot px-2"></i>{{ $advertisement->location->city }}</div>
             </div>
             <div class="relative">
   <div class="absolute top-0 right-0   md:pr-6 text-right text-base font-bold">
