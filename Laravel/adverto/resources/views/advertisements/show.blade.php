@@ -14,13 +14,15 @@
     <div class="flex justify-center items-center bg-[#f2f4f5] overflow-x-hidden">
         <div class="max-w-screen-xl m-5">
             <div class="grid md:grid-cols-3 gap-8 mx-4">
-                <div class="p-5 flex flex-col justify-center items-center bg-white col-span-2 rounded-lg">
-                    <div class="max-w-lg">
-                        @if ($advertisement->images->isNotEmpty())
-                            <img class="w-full" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
-                        @else
-                            <img class="bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
-                        @endif
+                <div class="p-5 flex flex-col justify-center bg-white col-span-2 rounded-lg">
+                    <div class=" flex justify-center items-center">
+                        <div class="max-w-lg">
+                            @if ($advertisement->images->isNotEmpty())
+                                <img class="w-full" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+                            @else
+                                <img class="bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                            @endif
+                        </div>
                     </div>
                     <div class="m-5">
                         <div class="pb-5">
