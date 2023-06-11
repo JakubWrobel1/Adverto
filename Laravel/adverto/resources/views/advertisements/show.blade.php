@@ -52,12 +52,12 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center bg-white p-5 rounded-lg h-64 w-screen md:w-96 md:min-w-fit whitespace-pre-line break-words">
+                <div class="flex justify-center bg-white p-5 rounded-lg h-96 w-screen md:w-96 md:min-w-fit whitespace-pre-line break-words">
                     <div class=" md:w-96 flex justify-center md:grid md:grid-cols-2 items-start">
                         <div class="flex flex-col w-full ">
                             <p>Imię: {{$user->name}}</p><br>
                             <p>Email: {{$user->email}}</p><br>
-                            <p>Telefon: {{$user->phone_number}}</p>
+                            <p>Telefon: {{$user->phone_number}}</p><br>
                             <p>Lokalizacja: {{$advertisement->location->city}}</p>
                         </div>
                         <div>
