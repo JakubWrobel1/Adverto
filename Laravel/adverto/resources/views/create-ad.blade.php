@@ -65,6 +65,15 @@
                         @error('user_autocomplete_address')
                             {{$message }}
                         @enderror
+                        @error('locality')
+                            {{$message }}
+                        @enderror
+                        @error('administrative_area_level_1')
+                            {{$message }}
+                        @enderror
+                        @error('country')
+                            {{$message }}
+                        @enderror
                     </span>
                 </div>
                     <input id="locality" name="locality" type="hidden">
