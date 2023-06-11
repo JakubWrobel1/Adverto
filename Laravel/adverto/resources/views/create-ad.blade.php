@@ -59,14 +59,17 @@
                 </div>
 
                 <div class="mb-4 bg-white p-8 rounded-md">
-                    <label for="location_id" class="block font-bold mb-2 text-sm">Lokalizacja*</label>
-                    <input type="number" name="location_id" class="w-full {{ $errors->has('location_id') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]">
+                    <label for="user_autocomplete_address" class="block font-bold mb-2 text-sm">Lokalizacja*</label>
+                    <input id="user_autocomplete_address" name="user_autocomplete_address" class="w-full {{ $errors->has('user_autocomplete_address') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]" placeholder="Zacznij wpisywać swój adres...">
                     <span id="locationError" class="text-red-500 text-xs">
                         @error('location_id')
                             {{$message }}
                         @enderror
                     </span>
                 </div>
+                    <input id="locality" name="locality">
+                    <input id="administrative_area_level_1" name="administrative_area_level_1">
+                    <input id="country" name="country">
 
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Dodaj ogłoszenie
@@ -74,4 +77,10 @@
             </form>
         </div>
     </div>
+    <!-- Include Google Maps JS API -->
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBRc8HqI9R9GxSh0gMGEqzIePdp-Hg8q5w"></script>
+
+    <!-- Custom JS code to bind to Autocomplete API -->
+    <script type="text/javascript" src="{{asset('js/autocomplete.js') }}"></script>
 @endsection
