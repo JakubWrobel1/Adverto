@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="grid grid-cols-1 gap-4 py-8 px-48 bg-[#f2f4f5]">
-        <div class="md:focus:ring-0 md:w-auto w-screen flex-col items-center p-10">
+    <div class="grid grid-cols-1 gap-4 py-8 md:px-32 bg-[#f2f4f5]">
+        <div class="md:focus:ring-0 md:w-auto w-screen flex-col items-center md:p-10">
             <h1 class="text-3xl font-bold mb-4">Dodaj ogłoszenie</h1>
 
             <form action="/ogloszenia" method="POST" class="" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4 bg-white p-8 rounded-md">
                     <label for="title" class="block font-bold mb-2 text-sm">Tytuł*</label>
-                    <input type="text" name="title" class="w-8/12 {{ $errors->has('title') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 mb-8 bg-[#f2f4f5]" placeholder="np. Galaxy S23 jak nówka..."><br>
+                    <input type="text" name="title" class="w-full md:w-8/12 {{ $errors->has('title') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 mb-8 bg-[#f2f4f5]" placeholder="np. Galaxy S23 jak nówka..."><br>
                     <span id="titleError" class="text-red-500 text-xs">
                         @error('title')
                             {{$message }}
@@ -70,10 +70,12 @@
                     <input id="locality" name="locality">
                     <input id="administrative_area_level_1" name="administrative_area_level_1">
                     <input id="country" name="country">
-
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <div class="flex justify-center md:block">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Dodaj ogłoszenie
-                </button>
+                    </button>
+                </div>
+                
             </form>
         </div>
     </div>
