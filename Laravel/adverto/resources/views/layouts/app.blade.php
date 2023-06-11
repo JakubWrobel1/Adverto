@@ -5,6 +5,7 @@
     @vite('resources/css/app.css')
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{asset('img/images/icons/favicon.png')}}">
     <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>  
 </head>
