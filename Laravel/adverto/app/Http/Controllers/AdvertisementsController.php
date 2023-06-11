@@ -38,22 +38,26 @@ class AdvertisementsController extends Controller
             'description' => 'required',
             'price' => 'required|numeric|max:1000000',
             'category_id' => 'required',
-            'location_id' => 'required',
             'images' => ['array'],
             'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
         ], [
             'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
         ]);
 
+        $location = new Location();
+        $location->city = $request->input('locality');
+        $location->province = $request->input('administrative_area_level_1');
+        $location->country = $request->input('country');
+        $location->save();
+
         $advertisement = new Advertisement();
         $advertisement->title = $validatedData['title'];
         $advertisement->description = $validatedData['description'];
         $advertisement->price = $validatedData['price'];
-        $advertisement->user_id = auth()->user()->id; // Assuming you have user authentication
+        $advertisement->user_id = auth()->user()->id;
         $advertisement->category_id = $validatedData['category_id'];
-        $advertisement->location_id = $validatedData['location_id'];
-        $advertisement->is_active = true; // Assuming the ad is active by default
-
+        $advertisement->location_id = $location->id;
+        $advertisement->is_active = true;
         $advertisement->save();
 
         if ($request->hasFile('images')) {

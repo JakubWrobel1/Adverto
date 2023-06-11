@@ -14,11 +14,11 @@
         <div class="flex justify-center w-screen">
             <div class="flex flex-col justify-center items-center relative m-20 w-full">
                     <div class="  max-w-lg h-full">
-                @if ($advertisement->images->isNotEmpty())
-                                        <img class="w-full h-full" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
-                                    @else
-                                        <img class="bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
-                                    @endif
+                        @if ($advertisement->images->isNotEmpty())
+                            <img class="w-full h-full" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
+                        @else
+                            <img class="bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
+                        @endif
                     </div>
                 <div class= "m-5 w-full p-5">
                     <div class="pb-5">
