@@ -36,51 +36,51 @@ class AdvertisementsController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'title' => 'required|max:100',
-                'description' => 'required',
-                'price' => 'required|numeric|max:1000000',
-                'category_id' => 'required',
-                'user_autocomplete_address' => 'required',
-                'images' => ['array'],
-                'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
-            ], [
-                'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
-            ]);
 
-            $location = new Location();
-            $location->city = $request->input('locality');
-            $location->province = $request->input('administrative_area_level_1');
-            $location->country = $request->input('country');
-            $location->save();
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'required',
+            'price' => 'required|numeric|max:1000000',
+            'category_id' => 'required',
+            'user_autocomplete_address' => 'required',
+            'locality' => 'required',
+            'images' => ['array'],
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
+        ], [
+            'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
+            'locality.required' => 'Lokalizacja jest wymagana.',
+        ]);
 
-            $advertisement = new Advertisement();
-            $advertisement->title = $validatedData['title'];
-            $advertisement->description = $validatedData['description'];
-            $advertisement->price = $validatedData['price'];
-            $advertisement->user_id = auth()->user()->id;
-            $advertisement->category_id = $validatedData['category_id'];
-            $advertisement->location_id = $location->id;
-            $advertisement->is_active = true;
-            $advertisement->save();
+        $location = new Location();
+        $location->city = $request->input('locality');
+        $location->province = $request->input('administrative_area_level_1');
+        $location->country = $request->input('country');
+        $location->save();
 
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $image) {
-                    $imageName = time().'.'.$image->extension();
-                    $image->move(public_path('images'), $imageName);
+        $advertisement = new Advertisement();
+        $advertisement->title = $validatedData['title'];
+        $advertisement->description = $validatedData['description'];
+        $advertisement->price = $validatedData['price'];
+        $advertisement->user_id = auth()->user()->id;
+        $advertisement->category_id = $validatedData['category_id'];
+        $advertisement->location_id = $location->id;
+        $advertisement->is_active = true;
+        $advertisement->save();
 
-                    $imageModel = new Image();
-                    $imageModel->url = $imageName;
-                    $imageModel->ad_id = $advertisement->id;
-                    $imageModel->save();
-                }
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path('images'), $imageName);
+
+                $imageModel = new Image();
+                $imageModel->url = $imageName;
+                $imageModel->ad_id = $advertisement->id;
+                $imageModel->save();
             }
-            return redirect()->back()->with('success', 'Ogłoszenie dodane poprawnie.');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors('Wprowadzono niepoprawną lokalizację.')->withInput();
         }
-    }
+        return redirect()->back()->with('success', 'Ogłoszenie dodane poprawnie.');
+    } 
+
 
     public function myAdvertisements()
     {
