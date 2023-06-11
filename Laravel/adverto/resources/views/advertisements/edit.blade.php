@@ -39,9 +39,26 @@
                 </div>
 
                 <div class="mb-4 bg-white p-8 rounded-md">
-                    <label for="location_id" class="block font-bold mb-2 text-sm">Lokalizacja*</label>
-                    <input type="number" name="location_id" class="w-full {{ $errors->has('location_id') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]" value="{{$advertisement->location_id}}">
+                    <label for="user_autocomplete_address" class="block font-bold mb-2 text-sm">Lokalizacja*</label>
+                    <input id="user_autocomplete_address" name="user_autocomplete_address" class="w-full {{ $errors->has('user_autocomplete_address') ? 'border-b-2 border-red-500 border-x-0 border-t-0' : 'border-transparent' }} rounded px-4 py-2 bg-[#f2f4f5]" placeholder="Zacznij wpisywać swój adres...">
+                    <span id="locationError" class="text-red-500 text-xs">
+                        @error('user_autocomplete_address')
+                            {{$message }}
+                        @enderror
+                        @error('locality')
+                            {{$message }}
+                        @enderror
+                        @error('administrative_area_level_1')
+                            {{$message }}
+                        @enderror
+                        @error('country')
+                            {{$message }}
+                        @enderror
+                    </span>
                 </div>
+                    <input id="locality" name="locality" type="hidden">
+                    <input id="administrative_area_level_1" name="administrative_area_level_1" type="hidden">
+                    <input id="country" name="country" type="hidden">
                 <div class="flex justify-center md:block">
                     <button type="submit" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Zapisz zmiany
@@ -49,15 +66,8 @@
                 </div>
             </form>
         </div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger mt-4">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     </div>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBRc8HqI9R9GxSh0gMGEqzIePdp-Hg8q5w"></script>
+    <script type="text/javascript" src="{{asset('js/autocomplete.js') }}"></script>
 @endsection

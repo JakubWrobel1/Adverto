@@ -56,6 +56,7 @@
                             <p>Imię: {{$user->name}}</p><br>
                             <p>Email: {{$user->email}}</p><br>
                             <p>Telefon: {{$user->phone_number}}</p>
+                            <p>Lokalizacja: {{$advertisement->location->city}}</p>
                         </div>
                         <div>
                             <img src="{{url('/img/images/icons/avatar.png')}}" alt="avatar" class="h-32 w-32  mx-4">
@@ -65,4 +66,5 @@
             </div>
         </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRc8HqI9R9GxSh0gMGEqzIePdp-Hg8q5w&libraries=places"></script>
 @endsection

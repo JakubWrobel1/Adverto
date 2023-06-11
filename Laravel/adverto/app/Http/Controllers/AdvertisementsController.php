@@ -65,8 +65,8 @@ class AdvertisementsController extends Controller
         $advertisement->category_id = $validatedData['category_id'];
         $advertisement->location_id = $location->id;
         $advertisement->is_active = true;
-        $advertisement->save();
 
+        $advertisement->save();
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time().'.'.$image->extension();
@@ -78,9 +78,9 @@ class AdvertisementsController extends Controller
                 $imageModel->save();
             }
         }
+
         return redirect()->back()->with('success', 'Ogłoszenie dodane poprawnie.');
     } 
-
 
     public function myAdvertisements()
     {
@@ -142,21 +142,40 @@ public function update($id, Request $request)
 {
     $validatedData = $request->validate([
         'title' => 'required|max:100',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'category_id' => 'required',
-            'location_id' => 'required',
-            'images' => 'array',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'description' => 'required',
+        'price' => 'required|numeric',
+        'category_id' => 'required',
+        'user_autocomplete_address' => 'required',
+        'locality' => 'required',
+        'images' => 'array',
+        'images.*' => 'image|mimes:jpeg,png,jpg|max:5120',
+    ], [
+        'images.*.max' => 'Zdjęcie nie może przekraczać :max kilobajtów. (5 MB)',
+        'locality.required' => 'Lokalizacja jest wymagana.',
     ]);
     
+    // Przeszukiwanie w poszukiwaniu lokalizacji w bazie
+    $location = Location::where('city', $request->input('locality'))
+        ->where('province', $request->input('administrative_area_level_1'))
+        ->where('country', $request->input('country'))
+        ->first();
+
+    // Jeśli lokalizacji nie znaleziono, utwórz nowy rekord w bazie danych
+    if (!$location) {
+        $location = new Location();
+        $location->city = $request->input('locality');
+        $location->province = $request->input('administrative_area_level_1');
+        $location->country = $request->input('country');
+        $location->save();
+    }
+
     $advertisement = Advertisement::findOrFail($id);
     
     $advertisement->title = $validatedData['title'];
     $advertisement->description = $validatedData['description'];
     $advertisement->price = $validatedData['price'];
     $advertisement->category_id = $validatedData['category_id'];
-    $advertisement->location_id = $validatedData['location_id'];
+    $advertisement->location_id = $location->id;
     // Zaktualizuj pozostałe pola ogłoszenia
     if ($request->hasFile('images')) {
         foreach ($request->file('images') as $image) {
