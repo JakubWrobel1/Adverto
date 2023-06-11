@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -26,32 +27,41 @@ class RegisteredUserController extends Controller
 
     /**
      * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name'=>['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'username' => ['max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', Rules\Password::defaults()],
-            'phone_number' => ['string', 'max:20',  'unique:users'],
-            'terms' =>['accepted']
+            'phone_number' => ['string', 'max:12', Rule::unique('users')],
+            'terms' => ['accepted'],
         ]);
-
-        $user = User::create([
-            'name'=> $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'phone_number' => $request->phone_number
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
-    }
+    
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'phone_number' => $request->phone_number,
+            ]);
+    
+            event(new Registered($user));
+    
+            Auth::login($user);
+    
+            return redirect(RouteServiceProvider::HOME);
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->errorInfo[1] === 1062) {
+                $errorMessage = 'Numer telefonu jest już zajęty.';
+                return redirect()->back()->withErrors(['phone_number' => $errorMessage])->withInput();
+            }
+    
+            // Inny obszar błędu, obsłuż go według własnych potrzeb
+            // ...
+    
+            throw $e; // Rzuć wyjątek dalej, jeśli nie obsłużono
+        }}
 }
