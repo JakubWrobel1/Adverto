@@ -19,6 +19,7 @@
                 <th class="pb-2 pt-2">Imię</th>
                 <th class="pb-2 pt-2">Nazwa użytkownika</th>
                 <th class="pb-2 pt-2">Email</th>
+                <th class="pb-2 pt-2">Telefon</th>
                 <th class="pb-2 pt-2">Akcje</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                     <td class="border border-gray-300 p-2 break-all">{{ $user->username }}
                     </td>
                     <td class="border border-gray-300 p-2  break-all">{{ $user->email }}</td>
+                    <td class="border border-gray-300 p-2  break-all">{{ $user->phone_number }}</td>
                     <td class="p-2 flex justify-center">
                         <a href="{{ route('users.edit', $user->id) }}" class="m-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition-colors duration-300">Edytuj</a>
                         <form action="{{ route('users.delete', $user) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">
