@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Witaj - '.$user->name)
 @section('content')
 
     <div class=" w-screen md:mt-10 justify-center items-center text-3xl font-semibold">

@@ -20,7 +20,7 @@ class AdvertisementsController extends Controller
     public function showByCategory($categoryName)
     {
         $category = Category::where('name', $categoryName)->firstOrFail();
-        $advertisements = Advertisement::where('category_id', $category->id)->get();
+        $advertisements = Advertisement::where('category_id', $category->id)->paginate(10);
 
         return view('advertisements.index', compact('advertisements', 'category'));
     }
@@ -85,7 +85,7 @@ class AdvertisementsController extends Controller
     public function myAdvertisements()
     {
         $user = auth()->user();
-        $advertisements = Advertisement::with('images')->where('user_id', $user->id)->get();
+        $advertisements = Advertisement::with('images')->where('user_id', $user->id)->paginate(10);
 
         return view('advertisements.myAdvertisements', compact('advertisements'));
     }

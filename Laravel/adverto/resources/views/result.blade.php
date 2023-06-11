@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Użytkownicy')
 @section('content')
 <form action="{{ route('users.search') }}" method="GET">
     <div class="flex border-2 border-white md:px-56 py-12 bg-[#f2f4f5]">
@@ -45,5 +46,10 @@
             @endforeach
         </tbody>
     </table>
+    <div class="flex justify-center space-between p-5 m-5">
+    {{ $users->links() }}
+</div>
+    
 @endif
+
 @endsection
