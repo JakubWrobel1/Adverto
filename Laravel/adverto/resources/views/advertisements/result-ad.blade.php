@@ -16,7 +16,7 @@
     @foreach($advertisements as $advertisement)
 <div class="p-2 md:p-0 bg-[#f2f4f5]">
     <li class="flex justify-center items-center  md:p-2">
-        <div class="grid grid-cols-3 md:grid-cols-5 bg-white p-2 md:p-5 ">
+        <div class="grid grid-cols-3 md:grid-cols-5 bg-white rounded-lg p-2 md:p-5 ">
         <a href="{{ route('advertisements.show', $advertisement->id) }}" class="">
             @if ($advertisement->images->isNotEmpty())
                 <img class="h-full w-60 col-span-1" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
