@@ -18,9 +18,9 @@ function onPlaceChanged() {
     if (!place.geometry) {
         // Wyświetl błąd lub wykonaj odpowiednie działania
         console.log('Błędne miejsce');
-        // Przykład: Zmień klasę pola na 'border-red-500' w celu oznaczenia błędnego pola
+        // Zmień klasę pola na 'border-red-500' w celu oznaczenia błędnego pola
         document.getElementById('user_autocomplete_address').classList.add('border-red-500');
-        // Przykład: Wyświetl komunikat błędu
+        // Wyświetl komunikat błędu
         document.getElementById('locationError').innerText = 'Wybierz prawidłową lokalizację.';
         return;
     }
@@ -31,7 +31,7 @@ function onPlaceChanged() {
 
     for (var i in place.address_components) {
         var component = place.address_components[i];
-        for (var j in component.types) {  // Some types are ["country", "political"]
+        for (var j in component.types) {
             var type_element = document.getElementById(component.types[j]);
             if (type_element) {
                 type_element.value = component.long_name;
@@ -49,7 +49,7 @@ document.getElementById('advertisementForm').addEventListener('submit', function
 
     // Sprawdź, czy miejsce zostało wybrane przed wysłaniem formularza
     if (place === '') {
-        // Wyświetl błąd lub wykonaj odpowiednie działania
+        // Wyświetl błąd
         console.log('Nie wybrano miejsca');
         // Przykład: Zmień klasę pola na 'border-red-500' w celu oznaczenia błędnego pola
         document.getElementById('user_autocomplete_address').classList.add('border-red-500');
