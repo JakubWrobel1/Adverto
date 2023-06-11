@@ -34,34 +34,23 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', Rules\Password::defaults()],
-            'phone_number' => ['string', 'max:12', Rule::unique('users')],
+            'password' => ['required', 'min:8'],
+            'phone_number' => ['string', 'max:12', 'unique:users'],
             'terms' => ['accepted'],
         ]);
     
-        try {
-            $user = User::create([
-                'name' => $request->name,
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'phone_number' => $request->phone_number,
-            ]);
-    
-            event(new Registered($user));
-    
-            Auth::login($user);
-    
-            return redirect(RouteServiceProvider::HOME);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->errorInfo[1] === 1062) {
-                $errorMessage = 'Numer telefonu jest już zajęty.';
-                return redirect()->back()->withErrors(['phone_number' => $errorMessage])->withInput();
-            }
-    
-            // Inny obszar błędu, obsłuż go według własnych potrzeb
-            // ...
-    
-            throw $e; // Rzuć wyjątek dalej, jeśli nie obsłużono
-        }}
+        $user = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
+        ]);
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
+    }
 }
