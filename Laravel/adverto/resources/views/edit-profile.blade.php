@@ -42,9 +42,15 @@
                 <div class="pt-3 pb-3">
                     <label for="phone_number" class="">Numer telefonu</label>
                     <div><input class="" type="tel" name="phone_number" value="{{ $user->phone_number}}" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{3}" required /></div>
-                        @error('phone_number')
-                            <div class="flex flex-col w-full text-red-600">{{ $message }}</div>
-                        @enderror  
+                    @if ($errors->any())
+                    <div style="color: red;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 </div>
                 <div class="pt-3 pb-3">
                     @unless(!($user->password))

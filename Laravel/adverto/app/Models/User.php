@@ -52,6 +52,35 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     return $this->hasMany(Advertisement::class);
 }
+
+
+    public function getPhoneNumberAttribute($value)
+    {
+        if ($value) {
+            // Formatuj numer telefonu
+            $formattedPhoneNumber = preg_replace('/(\d{3})(\d{3})(\d{3})/', '$1-$2-$3', $value);
+            return $formattedPhoneNumber;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set the phone number attribute.
+     *
+     * @param  string|null  $value
+     * @return void
+     */
+    public function setPhoneNumberAttribute($value)
+    {
+        if ($value) {
+            $phoneNumber = preg_replace('/[^0-9]/', '', $value);
+            $formattedPhoneNumber = preg_replace('/(\d{3})(\d{3})(\d{3})/', '$1-$2-$3', $phoneNumber);
+            $this->attributes['phone_number'] = $formattedPhoneNumber;
+        } else {
+            $this->attributes['phone_number'] = null;
+        }
+    }
 protected static function boot()
 {
     parent::boot();
