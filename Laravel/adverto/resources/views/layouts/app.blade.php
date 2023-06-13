@@ -6,6 +6,7 @@
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{asset('img/images/icons/favicon.png')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>  
 </head>

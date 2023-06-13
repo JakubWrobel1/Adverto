@@ -79,7 +79,7 @@ class AdvertisementsController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Ogłoszenie dodane poprawnie.');
+        return redirect()->route('advertisements.myAdvertisements')->with('success', 'Ogłoszenie dodane poprawnie.');
     } 
 
     public function myAdvertisements()

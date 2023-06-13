@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Moje ogłoszenia - Adverto')
 @section('content')
     <div class=" w-screen md:mt-10 justify-center items-center text-3xl font-semibold">
         <div class="bg-white md:ml-20 md:pr-0 md:pl-0 w-screen">
