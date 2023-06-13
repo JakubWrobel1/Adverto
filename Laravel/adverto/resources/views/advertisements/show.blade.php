@@ -16,14 +16,36 @@
             <div class="grid md:grid-cols-3 gap-8 mx-4">
                 <div class="p-5 flex flex-col justify-center bg-white col-span-2 rounded-lg">
                     <div class=" flex justify-center items-center">
-                        <div class="max-w-lg">
-                            @if ($advertisement->images->isNotEmpty())
-                                <img class="w-full" src="{{ asset('images/' . $advertisement->images->first()->url) }}" alt="ad-image">
-                            @else
-                                <img class="bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}"></img>
-                            @endif
+                        <div class="container flex items-center justify-center">
+                        
+                            <!-- Slider main container -->
+                            <div class="swiper w-7/12 h-fit">
+                            <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    @if ($advertisement->images->isNotEmpty())
+                                        @foreach ($advertisement->images as $image)
+                                            <div class="swiper-slide">
+                                                <img class="w-full" src="{{ asset('images/' . $image->url) }}" alt="ad-image">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                    <div class="swiper-slide">
+                                        <img class="w-full bg-gray-200" src="{{ asset('img/images/icons/no-image.png') }}" alt="no-image">
+                                    </div>
+                                    @endif
+                                </div>
+                                <!-- If we need pagination -->
+                                <div class="swiper-pagination"></div>
+
+                                <!-- If we need navigation buttons -->
+                                <div class="swiper-button-prev pr-7"></div>
+                                <div class="swiper-button-next pl-7"></div>
+
+                            </div>
+
                         </div>
                     </div>
+
                     <div class="m-5">
                         <div class="pb-5">
                             <h2 class="text-lg md:text-4xl whitespace-pre-line break-all">{{ $advertisement->title }}</h2>
@@ -69,4 +91,21 @@
         </div>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRc8HqI9R9GxSh0gMGEqzIePdp-Hg8q5w&libraries=places"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+
+  loop: true,
+
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+});
+    </script>
 @endsection
