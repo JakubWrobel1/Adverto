@@ -90,6 +90,9 @@ protected static function boot()
     });
 
     static::deleting(function ($user) {
+        $user->advertisements()->each(function ($advertisement) {
+            $advertisement->images()->delete();
+        });
         $user->advertisements()->delete();
     });
 }
