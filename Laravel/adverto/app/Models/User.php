@@ -89,8 +89,11 @@ class User extends Authenticatable implements MustVerifyEmail
             $model->phone_number = preg_replace('/(\d{3})(\d{3})(\d{3})/', '$1-$2-$3', $model->phone_number);
         });
 
-        static::deleting(function ($user) {
-            $user->advertisements()->delete();
+    static::deleting(function ($user) {
+        $user->advertisements()->each(function ($advertisement) {
+            $advertisement->images()->delete();
         });
-    }
+        $user->advertisements()->delete();
+    });
+}
 }
