@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'phone_number' => ['string', 'max:12', 'unique:users'],
             'terms' => ['accepted'],
         ]);
-    
+
         $user = User::create([
             'name' => $request->name,
             'username' => $request->username,

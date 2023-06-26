@@ -15,7 +15,7 @@ class MyAccount extends Controller
         $user = Auth::user();
         return view('my-profile', compact('user'));
     }
-    
+
     public function edit()
     {
         $user = Auth::user();
@@ -27,8 +27,8 @@ class MyAccount extends Controller
         $user = Auth::user();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
-            'phone_number' => ['string', 'max:12', 'nullable', 'unique:users,phone_number,'.$user->id],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'phone_number' => ['string', 'max:12', 'nullable', 'unique:users,phone_number,' . $user->id],
             'old_password' => ['nullable', function ($attribute, $value, $fail) use ($user) {
                 if (!Hash::check($value, $user->password)) {
                     $fail('Obecne hasło jest nieprawidłowe.');
@@ -36,17 +36,16 @@ class MyAccount extends Controller
             }],
             'new_password' => ['nullable', 'confirmed', 'min:8'],
         ]);
-        
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone_number = $request->input('phone_number');
 
         $newPassword = $request->input('new_password');
-        if (!empty($newPassword)) 
-        {
+        if (!empty($newPassword)) {
             $user->password = Hash::make($newPassword);
         }
-        
+
         $user->save();
 
         return redirect()->route('my-account');
