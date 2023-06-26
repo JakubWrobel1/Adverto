@@ -26,7 +26,7 @@ Route::get('/my-account', function () {
     return view('my-account');
 })->middleware(['auth', 'verified'])->name('my-account');
 
-Route::middleware('auth')->group(function () { 
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -34,11 +34,11 @@ Route::middleware('auth')->group(function () {
 
 Route::post('logout', [Logout::class, 'logout'])->name('logout');
 
-Route::get('/welcome', function(){
+Route::get('/welcome', function () {
     return view('welcome');
-})->middleware(['verified'])->name('welcome');
+})->name('welcome')->middleware(['verified']);
 
-Route::get('/create-ad', function(){
+Route::get('/create-ad', function () {
     return view('create-ad');
 })->middleware(['verified'])->name('create-ad');
 
@@ -57,7 +57,7 @@ Route::post('set-password', [ProviderController::class, 'setPassword'])->name('s
 Route::get('login/{provider}/callback', [ProviderController::class, 'redirect'])->name('login.provider.callback');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
- 
+
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::get('/ads/{categoryName}', [AdvertisementsController::class, 'showByCategory']);
@@ -74,27 +74,22 @@ Route::get('/ogloszenia', [AdvertisementsController::class, 'search'])->name('ad
 
 Route::get('/ogloszenia', [AdvertisementsController::class, 'advertisementSearch'])->name('advertisements.advertisementSearch');
 
-Route::delete('/ogloszenia/{advertisement}', [AdvertisementsController:: class, 'advertisementDelete'])->name('advertisement.delete');
+Route::delete('/ogloszenia/{advertisement}', [AdvertisementsController::class, 'advertisementDelete'])->name('advertisement.delete');
 
 Route::get('/ogloszenie/{id}/edit', [AdvertisementsController::class, 'edit'])->name('advertisements.edit');
 
 Route::put('/ogloszenie/{id}', [AdvertisementsController::class, 'update'])->name('advertisements.update');
 
-
-Route::get('/users', [UserController:: class, 'index'])->name('users.show');
+Route::get('/users', [UserController::class, 'index'])->name('users.show');
 
 Route::get('/users/search', [UserController::class, 'userSearch'])->name('users.search');
 
 Route::get('/users/{user}/edit', [UserController::class, 'userEdit'])->name('users.edit');
 
-Route::middleware('admin')->get('/users', [UserController:: class, 'index']);
+Route::middleware('admin')->get('/users', [UserController::class, 'index']);
 
 Route::put('/users/{user}', [UserController::class, 'userUpdate'])->name('users.update');
 
 Route::delete('/users/{user}', [UserController::class, 'userDelete'])->name('users.delete');
 
-Route::get('map', function(){
-    return view('map');
-});
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

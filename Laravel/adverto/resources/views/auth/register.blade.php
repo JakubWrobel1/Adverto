@@ -1,9 +1,9 @@
 <head>
     <meta charset="utf-8">
-    
+
     <!-- Mobile responsibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Rejestracja - Adverto</title>
 
     @vite('resources/css/app.css')
@@ -11,13 +11,13 @@
     <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{{asset('js/register.js') }}"></script>
-    
-    
+
 </head>
+
 <body class="bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center">
     <div class="bg-white w-screen  md:max-w-md md:h-4/5 md:rounded-lg  flex flex-col md:shadow-2xl">
         <div class="justify-center p-3 flex-grow">
-            <div class="mb-5 p-2">
+            <div class=" p-2">
                 <a href="{{url('welcome')}}">
                     <img src="{{asset('img/images/icons/logo_blue.png')}}" alt="Adverto">
                 </a>
@@ -33,27 +33,28 @@
             </div>
 
             <form method="POST" action="{{route('register')}}">
-               @csrf
-               <div class="flex flex-col mb-2 px-4">
+                @csrf
+                <div class="flex flex-col mb-2 px-4">
                     <label for="name" class="block mb-2 text-sm">Imię*</label>
-                    <input  class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="name"  value="{{ old('name') }}" required />
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="name" value="{{ old('name') }}" required />
                     <span id="nameError" class="text-red-500 text-xs">
-                        @error('name') 
-                            {{$message }}
+                        @error('name')
+                        {{$message }}
                         @enderror
                     </span>
                 </div>
-               <div class="flex flex-col mb-2 px-4">
+                <div class="flex flex-col mb-2 px-4">
                     <label for="username" class="block mb-2 text-sm">Nazwa użytkownika*</label>
                     <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="text" name="username" value="{{ old('username') }}" required />
                     <span id="usernameError" class="text-red-500 text-xs">
-                        @error('username')                       
-                            <div class="text-red-500">
-                                @if($message ==='Taki login już istnieje.')
-                                    Nazwa użytkownika jest zajęta
-                                @else
-                                    {{$message}}
-                                @endif</div>
+                        @error('username')
+                        <div class="text-red-500">
+                            @if($message ==='Taki login już istnieje.')
+                            Nazwa użytkownika jest zajęta
+                            @else
+                            {{$message}}
+                            @endif
+                        </div>
                         @enderror
                     </span>
                 </div>
@@ -62,25 +63,25 @@
                     <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="email" name="email" value="{{ old('email') }}" required />
                     <span id="emailError" class="text-red-500 text-xs">
                         @error('email')
-                            <div class="text-red-500">{{$message }}</div>
+                        <div class="text-red-500">{{$message }}</div>
                         @enderror
                     </span>
                 </div>
                 <div class="flex flex-col mb-2 px-4">
-    <label for="phone_number" class="block mb-2 text-sm">Numer telefonu*</label>
-    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="tel" name="phone_number" value="{{ old('phone_number') }}" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{3}" required />
-    <span id="phoneError" class="text-red-500 text-xs">
-    @if ($errors->any())
-                    <div style="color: red;">
-                        <ul>
-                            @foreach ($errors->all() as $error)
+                    <label for="phone_number" class="block mb-2 text-sm">Numer telefonu*</label>
+                    <input class="w-full rounded-sm border-none bg-[#f2f4f5] shadow-sm mb-2" type="tel" name="phone_number" value="{{ old('phone_number') }}" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{3}" required />
+                    <span id="phoneError" class="text-red-500 text-xs">
+                        @if ($errors->any())
+                        <div style="color: red;">
+                            <ul>
+                                @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-    </span>
-</div>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                    </span>
+                </div>
 
                 <div class="flex flex-col mb-2 px-4 relative">
                     <label for="password" class="block mb-2 text-sm">Hasło*</label>
@@ -93,28 +94,28 @@
                     </div>
                     <span id="passwordError" class="text-red-500 text-xs">
                         @error('password')
-                            @if ($message === 'Pole password musi mieć co najmniej 8 znaków.')
-                                Hasło musi mieć co najmniej 8 znaków.
-                            @elseif($message === 'Potwierdzenie pola password nie zgadza się.')
-                                Podane hasła nie są takie same.
-                            @else
-                                {{$message}}
-                            @endif
+                        @if ($message === 'Pole password musi mieć co najmniej 8 znaków.')
+                        Hasło musi mieć co najmniej 8 znaków.
+                        @elseif($message === 'Potwierdzenie pola password nie zgadza się.')
+                        Podane hasła nie są takie same.
+                        @else
+                        {{$message}}
+                        @endif
                         @enderror
                     </span>
                 </div>
                 <div class="flex justify-center items-center mb-4">
                     <p>Akceptuję regulamin sklepu internetowego &ensp;</p>
-                    <input type="checkbox" name="terms" required/>
+                    <input type="checkbox" name="terms" required />
                     @error('terms')
-                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="flex justify-center mt-10">
                     <button id="submitBtn" class="mx-4 h-12 w-screen md:w-full md:rounded-md text-xl text-[#7F9799] bg-[#D8DFE0] font-semibold" type="submit">{{__('Zarejestruj się')}}</button>
                 </div>
             </form>
-        </div>            
+        </div>
         <div class=" flex flex-col items-center justify-center text-lg bg-gradient-to-r from-cyan-500 to-blue-500 pt-8">
             <h3 class="text-white">Lub zaloguj się za pomocą: </h3>
             <div class="flex justify-center  text-2xl">
