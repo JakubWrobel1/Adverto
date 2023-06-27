@@ -12,7 +12,6 @@ This Adverto project is a web application based on the Laravel framework. It all
 - Browsing classified ads in different categories
 - Searching for classified ads
 - User roles and permissions (administrator, user)
-- Messaging system between users
 - Management of ad categories
 
 ## System Requirements
