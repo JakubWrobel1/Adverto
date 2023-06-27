@@ -15,7 +15,7 @@
 <body class="bg-white overflow-x-hidden flex flex-col min-h-screen">
     <header class="flex bg-[#037ab9]">
         <div class="w-screen flex items-center justify-between pt-4 pb-4">
-            <div class="w-screen scale-75 md:scale-100 md:w-60 md:pl-10">
+            <div class="w-screen scale-75 sm:scale-100 sm:w-60 sm:pl-10">
                 <a href="{{url('welcome')}}">
                     <img class="w-36 md:w-48" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
                 </a>
@@ -64,7 +64,7 @@
                     @else
                     <div class="w-auto md:hidden bg-inherit text-white">
                         <div class="hover:text-slate-400">
-                            <a href="{{ route('login') }}" class="flex items-center justify-center md:pr-5 mt-2 fa-solid fa-right-to-bracket text-xl "></a>
+                            <a href="{{ route('login') }}" class="flex items-center justify-center pr-5 mt-6 sm:mt-4  fa-solid fa-right-to-bracket text-xl "></a>
                         </div>
                     </div>
 
@@ -79,13 +79,14 @@
                     @endauth
                     @endif
                 </button>
-                <div class="">
-                    <button class="relative inline-flex items-center justify-center h-10 p-0.5 mx-2 md:mx-10 text-sm font-medium text-gray-900 rounded-full group bg-gradient-to-br from-yellow-400 to-yellow-600 group-hover:from-yellow-400 group-hover:to-yellow-600 font-semibold text-white">
-                        <span class="relative px-5 md:py-2 transition-all ease-in duration-75 dark:bg-[#037ab9] rounded-full group-hover:bg-opacity-0 font-semibold">
-                            <a href="{{ route('create-ad') }}">Dodaj ogłoszenie</a>
-                        </span>
-                    </button>
-                </div>
+
+                <a href="{{ route('create-ad') }}" class="rounded-full px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-yellow-400 text-white mr-10">
+                    <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-yellow-400 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                    <span class="relative text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] transition duration-500 ease">Dodaj ogłoszenie</span>
+                </a>
+
+
+
             </div>
         </div>
     </header>
