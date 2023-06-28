@@ -24,7 +24,7 @@
                 <button class="flex group">
                     @if (Route::has('login'))
                     @auth
-                    <div class="w-auto bg-inherit text-white">
+                    <div class="w-auto bg-inherit text-white mr-10 mt-1.5">
                         <div class="hover:text-slate-400 pt-1.5">
                             <span class="inline-flex items-center text-white hover:text-black text-lg">
                                 <i class="fa-solid fa-xl pr-1.5 fa-circle-user "></i><span class="hidden md:flex">Twoje konto</span>
