@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 
+    'google_map_key' => env('GOOGLE_MAP_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

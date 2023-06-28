@@ -1,5 +1,5 @@
 <p align="center"><img src="{{ asset('img/images/icons/logo.png') }}" width="400" alt="Laravel Logo"></a></p>
-
+![logo](./adverto/public/img/images/icons/logo.png)
 
 # Adverto Project - README
 
@@ -25,11 +25,11 @@ This Adverto project is a web application based on the Laravel framework. It all
 
 1. Clone the repository to your local environment:
 
-git clone https://github.com/your-username/online-classifieds-project.git
+git clone https://github.com/zwolinskidominik/Adverto.git
 
 2. Navigate to the project directory:
 
-cd online-classifieds-project
+cd Adverto
 
 3. Install PHP dependencies using Composer:
 
@@ -84,18 +84,18 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=your@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 
-- To configure the SMS notification service, set the SMS provider details in the .env file:
+- To configure the Google Sign Up and Google Places API service, set the provider details in the .env file:
 
-SMS_PROVIDER=twilio
-TWILIO_SID=your-twilio-sid
-TWILIO_TOKEN=your-twilio-token
-TWILIO_PHONE_NUMBER=your-twilio-phone-number
+GOOGLE_CLIENT_ID=YOUR_CLIENT_ID
+GOOGLE_CLIENT_SECRET=YOUR_SECRET_CODE
+
+GOOGLE_MAP_KEY=YOUR_MAP_KEY
 
 ## Authors
 
 This project was created by:
 
-- Jan Kowalski <jan.kowalski@example.com>
-- Anna Nowak <anna.nowak@example.com>
+- Dominik Zwoliński
+- Jakub Wróbel
 
 If you have any questions or feedback regarding the project, please contact us.
