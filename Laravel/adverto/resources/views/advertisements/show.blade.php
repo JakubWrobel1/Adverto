@@ -87,7 +87,7 @@
         </div>
     </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_map_key') }}&libraries=places"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
     const swiper = new Swiper('.swiper', {

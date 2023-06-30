@@ -59,6 +59,6 @@
         </form>
     </div>
 </div>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyBRc8HqI9R9GxSh0gMGEqzIePdp-Hg8q5w"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key={{ config('app.google_map_key') }}"></script>
 <script type="text/javascript" src="{{asset('js/autocomplete.js') }}"></script>
 @endsection
