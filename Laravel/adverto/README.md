@@ -1,5 +1,4 @@
-<p align="center"><img src="{{ asset('img/images/icons/logo.png') }}" width="400" alt="Laravel Logo"></a></p>
-![logo](./adverto/public/img/images/icons/logo.png)
+![logo](https://github.com/zwolinskidominik/Adverto/assets/94808072/7ca178ac-0fa2-4ca4-b40f-af5d40e6368c)
 
 # Adverto Project - README
 
