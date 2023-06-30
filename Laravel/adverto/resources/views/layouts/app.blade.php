@@ -1,95 +1,31 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<head>
-    <meta charset="utf-8">
-    @vite('resources/css/app.css')
-    <!-- Mobile responsibility -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{asset('img/images/icons/favicon.png')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <script src="https://kit.fontawesome.com/f810359848.js" crossorigin="anonymous"></script>
-    <title>@yield('title')</title>
-</head>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-<body class="bg-white overflow-x-hidden flex flex-col min-h-screen">
-    <header class="flex bg-[#037ab9]">
-        <div class="w-screen flex items-center justify-between pt-4 pb-4">
-            <div class="w-screen scale-75 sm:scale-100 sm:w-60 sm:pl-10">
-                <a href="{{url('welcome')}}">
-                    <img class="w-36 md:w-48" src="{{ asset('img/images/icons/logo.png') }}" alt="Adverto">
-                </a>
-            </div>
-            <div class="flex inline-block relative">
-                <button class="flex group">
-                    @if (Route::has('login'))
-                    @auth
-                    <div class="w-auto bg-inherit text-white mr-10 mt-1.5">
-                        <div class="hover:text-slate-400 pt-1.5">
-                            <span class="inline-flex items-center text-white hover:text-black text-lg">
-                                <i class="fa-solid fa-xl pr-1.5 fa-circle-user "></i><span class="hidden md:flex">Twoje konto</span>
-                            </span>
-                        </div>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-                        <ul class="z-10 absolute hidden w-40 pt-1 group-hover:block shadow-md text-black text-opacity-16 cursor-auto">
-                            <li class="w-full">
-                                <h5 class="bg-white py-2 px-4 block whitespace-no-wrap font-semibold text-[#11acef]">
-                                    Twoje konto
-                                </h5>
-                            </li>
-                            <li class="w-full">
-                                <a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{route('my-profile')}}">Mój profil</a>
-                            </li>
-                            <li class="w-full">
-                                <a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('advertisements.myAdvertisements') }}">Moje ogłoszenia</a>
-                            </li>
-                            <li>
-                                <a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('my-account.edit') }}">Ustawienia</a>
-                            </li>
-                            @if (Auth::user() && Auth::user()->is_admin)
-                            <li><a class="bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{url('/users')}}">Zarządzaj użytkownikami</a></li>
-                            @endif
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            @include('layouts.navigation')
 
-                            <li class="w-full">
-                                <a class="rounded-b bg-white hover:bg-[#005a97] hover:text-white py-2 px-4 block whitespace-no-wrap" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                    {{ __('Wyloguj') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                        </ul>
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
                     </div>
-                    @else
-                    <div class="w-auto md:hidden bg-inherit text-white">
-                        <div class="hover:text-slate-400">
-                            <a href="{{ route('login') }}" class="flex items-center justify-center pr-5 mt-6 sm:mt-4  fa-solid fa-right-to-bracket text-xl "></a>
-                        </div>
-                    </div>
-
-                    <div class="hidden md:flex w-auto bg-inherit text-white">
-                        <a href="{{ route('login') }}" class="hover:text-blue-200 pr-5 text-xl">Logowanie</a>
-                    </div>
-                    @if (Route::has('register'))
-                    <div class="hidden md:flex md:w-auto md:bg-inherit md:text-white">
-                        <a href="{{ route('register') }}" class="hover:text-blue-200 pr-5 text-xl">Rejestracja</a>
-                    </div>
-                    @endif
-                    @endauth
-                    @endif
-                </button>
-
-                <a href="{{ route('create-ad') }}" class="rounded-full px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-yellow-400 text-white mr-10">
-                    <span class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-yellow-400 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
-                    <span class="relative text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] transition duration-500 ease">Dodaj ogłoszenie</span>
-                </a>
-
-
-
-            </div>
-        </div>
-    </header>
+                </header>
+            @endif
 
     @yield('content')
     <div class="bg-[#037ab9] mt-auto">
