@@ -1,4 +1,4 @@
-![logo](https://github.com/zwolinskidominik/Adverto/assets/94808072/7ca178ac-0fa2-4ca4-b40f-af5d40e6368c)
+![logo_blue](https://github.com/zwolinskidominik/Adverto/assets/94808072/e36c3493-5665-41b6-9322-b2a8f30085c7)
 
 # Adverto Project - README
 
